@@ -1,0 +1,116 @@
+Here are best practices for Angular2/typescript and scss
+
+TYPESCRIPT:
+
+Semicolons:
+Yes
+
+Classes:
+PascalCase
+
+Make sure to have a space between name and bracket
+
+<example>
+class MyClass {}
+             ^
+</example>
+
+Member Variables:
+camelCase
+
+Member methods:
+camelCase
+
+All class members should go above the constructor, and should be set as private
+by default.
+
+Method Declarations:
+Make sure to have a space between parenthesis and bracket
+
+<example>
+ private myMethod() {}
+</example>
+
+If / Other control statements or loops:
+Space between the statement and parenthesis. Space between parenthesis and
+the bracket is optional
+
+<example>
+  if (true){}
+    ^
+  OR
+  if (true) {}
+</example>
+
+
+
+Any interfaces implemented should be below the constructor, but it should be
+above any custom methods
+
+<example>
+  constructor() {}
+
+  ngOnInit() {}
+
+  myOwnMethod() {}
+</example>
+
+Angular2:
+
+Components:
+
+If you are using ViewContainerRef for a custom component,
+you are probably doing it wrong
+
+If a component needs data, then it should be requesting it for itself, not having
+its parent grabbing it because it makes components confusing to read. There
+are very few cases where it needs to be the other way around, and this can be changed
+depending on the case
+
+<bad-example>
+class MyComponent {
+  private data;
+  constructor(private myService: MyService) {
+    this.myService.getData().subscribe(results => {
+      this.data = results;
+    })
+  }
+}
+
+class TableComponent {
+  @Input() data;
+}
+
+HTML
+<table-component [table-data]="data"><table-component>
+
+</bad-example>
+
+<good-example>
+class MyComponent {
+  // The id that we can use for filtering
+  private id: number
+}
+
+class TableComponent implements OnChanges {
+  @Input() filters;
+  private data;
+
+  constructor(private myService: MyService)
+
+  // This may look messy here, but it cleans up parent components
+  // so that they don't have to deal with all of their children's data
+
+  onChanges(change) {
+    if(change.filters !== undefined) {
+      this.myService.getData().subscribe(results => {
+        this.data = results
+      })
+    }
+  }
+}
+
+HTML
+<table-component [filters]="{dataItem: id}"></table-component>
+
+</good-example>
