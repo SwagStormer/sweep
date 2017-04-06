@@ -1,9 +1,34 @@
 <div class="container">
-  <div class="side-nav" *ngIf="sideNav.toggled">
-    <div class="side-nav__overlay" (click)="sideNav.toggle()"></div>
+  <div class="side-nav-container" *ngIf="sideNav.toggled">
+    <div class="side-nav-container__overlay" (click)="sideNav.toggle()"></div>
     <div class="inner-container">
-      <div class="side-nav-main" [@flyIn]="sideNavStat">
-
+      <div class="side-nav" [@flyIn]="sideNav.state">
+        <div class="side-nav__header"></div>
+          <div class="side-nav__item">
+            <div class="side-nav__item__container">
+              <md-icon>home</md-icon>
+              <div class="side-nav__item__text">Home</div>
+            </div>
+          </div>
+          <div class="side-nav__item">
+            <div class="side-nav__item__container">
+              <md-icon>person</md-icon>
+              <div class="side-nav__item__text">Profile</div>
+            </div>
+          </div>
+          <div class="side-nav__item">
+            <div class="side-nav__item__container">
+              <md-icon>group</md-icon>
+              <div class="side-nav__item__text">Contributors</div>
+            </div>
+          </div>
+          <div class="side-nav__item">
+            <div class="side-nav__item__container">
+              <md-icon>info</md-icon>
+              <div class="side-nav__item__text">Info</div>
+            </div>
+          </div>
+          <button md-button (click)="logOut()">Log Out</button>
       </div>
     </div>
 
