@@ -12,6 +12,8 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './home/routes/dashboard/dashboard.component';
 import { CourseComponent } from './home/routes/course/course.component';
+import { CookieService } from 'angular2-cookie/core';
+import {CanActivateViaAuthGuard} from './shared/services/auth/auth.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,10 @@ import { CourseComponent } from './home/routes/course/course.component';
     ChartsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    CookieService,
+    CanActivateViaAuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

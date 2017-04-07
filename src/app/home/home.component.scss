@@ -16,8 +16,25 @@ md-sidenav {
 }
 
 .header {
+  display: flex;
   background: #3f51b5;
   height: 200px;
+
+
+  &__username {
+    align-self: flex-end;
+    display: flex;
+    justify-content: center;
+    margin: 16px;
+    color: white;
+    bottom: 0;
+
+    span {
+      align-self: center;
+      margin-left: 16px;
+    }
+
+  }
 }
 
 .sidenav-icon {

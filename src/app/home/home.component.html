@@ -1,13 +1,16 @@
 <md-sidenav-container>
   <md-sidenav #sidenav>
     <div class="header">
-
+      <div class="header__username">
+        <md-icon>person_outline</md-icon>
+        <span>{{auth.getUsername()}}</span>
+      </div>
     </div>
     <md-nav-list>
       <md-list-item>
         <md-icon class="sidenav-icon">dashboard</md-icon>
         <span>Your Dashboard</span>
-      </md-list-item >
+      </md-list-item>
       <md-list-item>
         <md-icon class="sidenav-icon">pie_chart</md-icon>
         <span>Teaching statistics</span>
@@ -16,6 +19,7 @@
         <md-icon class="sidenav-icon">settings</md-icon>
         <span>Settings</span>
       </md-list-item>
+      <button md-button>Log Out</button>
 
     </md-nav-list>
 
