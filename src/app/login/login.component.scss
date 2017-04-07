@@ -1,0 +1,58 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  background-color: #013A6B;
+  background-image: -webkit-linear-gradient(30deg, #1A237E 50%, #5C6BC0 50%);
+  min-height: 500px;
+  display: flex;
+  justify-content: center;
+}
+
+.login-box {
+  min-height: 400px;
+  width: 320px;
+  background: white;
+  margin: auto;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  .fab {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: -24px;
+    margin-right: -24px;
+  }
+
+  &__header {
+    color: #3f51b5;
+    text-align: center;
+    font-size: 24px;
+    padding: 32px;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    padding: 16px 32px;
+
+
+    * + * {
+      margin-top: 8px;
+    }
+
+  }
+
+  &__button {
+    margin: auto;
+    align-self: center;
+  }
+
+  &__sign-up {
+    padding: 16px;
+    text-align: center;
+  }
+
+}

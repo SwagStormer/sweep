@@ -48,6 +48,8 @@ Any interfaces implemented should be below the constructor, but it should be
 above any custom methods
 
 <example>
+  private myMember: string;
+
   constructor() {}
 
   ngOnInit() {}

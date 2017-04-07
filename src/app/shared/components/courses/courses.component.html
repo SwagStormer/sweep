@@ -1,0 +1,11 @@
+<div class="header">Your Courses</div>
+<div class="container">
+  <md-card *ngFor="let course of courses">
+    <md-card-title>{{course.name}}</md-card-title>
+    <md-card-subtitle>{{course.numberOfStudents}} students</md-card-subtitle>
+
+    <md-card-actions>
+      <button md-button color="accent">Speed Grade</button>
+    </md-card-actions>
+  </md-card>
+</div>

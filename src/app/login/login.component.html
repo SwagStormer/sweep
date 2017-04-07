@@ -1,3 +1,55 @@
-<p>
-  login works!
-</p>
+<div class="container">
+  <div class="login-box" *ngIf="loginToggled">
+    <div class="login-box__header">Login</div>
+    <div class="login-box__form">
+      <md-input-container>
+        <input mdInput placeholder="Username" [(ngModel)]="user.username" type="username">
+      </md-input-container>
+      <md-input-container>
+        <input mdInput placeholder="Password" [(ngModel)]="user.password" type="password">
+      </md-input-container>
+    </div>
+    <button
+      md-raised-button
+      [disabled]="!loginValid()"
+      (click)="login()"
+      color="primary"
+      class="login-box__button">Login</button>
+
+    <div
+      (click)="toggleLogin()"
+      class="login-box__sign-up">Don't have an account? Sign in!</div>
+
+  </div>
+
+  <div class="login-box" *ngIf="!loginToggled">
+    <div class="login-box__header">Login</div>
+    <div class="login-box__form">
+      <md-input-container>
+        <input mdInput placeholder="Username" [(ngModel)]="signUpUser.username" type="username">
+      </md-input-container>
+      <md-input-container>
+        <input mdInput placeholder="Password" [(ngModel)]="signUpUser.password" type="password">
+      </md-input-container>
+      <md-input-container>
+        <input mdInput placeholder="Password (confirm)" [(ngModel)]="signUpUser.passwordConfirm" type="password">
+      </md-input-container>
+      <md-input-container>
+        <input mdInput placeholder="Teacher Code" [(ngModel)]="signUpUser.code" type="username">
+      </md-input-container>
+    </div>
+    <button
+      md-raised-button
+      [disabled]="!signUpValid()"
+      (click)="login()"
+      color="primary"
+      class="login-box__button">Sign Up</button>
+
+    <div
+      (click)="toggleLogin()"
+      class="login-box__sign-up">Have an account? Login in!</div>
+
+  </div>
+
+
+</div>
