@@ -11,17 +11,17 @@ import { StudentService, Student} from '../../services/student/student.service';
 })
 export class AssignmentsComponent implements OnInit {
 
-  private assignments: Assignment[] = []
+  public assignments: Assignment[] = [];
 
   constructor(
     private assignmentService: AssignmentService,
-    private studentService: StudentService
+    public studentService: StudentService
   ) { }
 
   ngOnInit() {
     this.assignmentService.getAssignments().subscribe(assignments => {
       this.assignments = assignments;
-    })
+    });
 
   }
 

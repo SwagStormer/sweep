@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 
 export class Slide extends Animation {
-  description = "Slide back and forth"
+  description = "Slide back and forth";
   self(): any {
     return trigger('slide', [
       state('right', style({right: '0'})),

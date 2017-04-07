@@ -16,14 +16,14 @@ export class LoginComponent implements OnInit {
   private user = {
     username: '',
     password: '',
-  }
+  };
 
   private signUpUser = {
     username: '',
     password: '',
     passwordConfirm: '',
     code: '',
-  }
+  };
 
 
 

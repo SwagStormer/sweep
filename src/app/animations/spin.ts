@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 
 export class Spin extends Animation {
-  description = "Spins the element around"
+  description = "Spins the element around";
   public self(): any {
     return trigger('spin', [
       state('closed', style({transform: "rotate(0deg)"})),
