@@ -3,6 +3,7 @@ import { Observable, Subject, ReplaySubject } from 'rxjs/Rx';
 
 export class Course {
   constructor(
+    public id: number,
     public name: string,
     public period: number,
     public code: number,
@@ -14,12 +15,12 @@ export class Course {
 export class CourseService {
 
   private courses: Array<Course> = [
-    new Course('English 1010', 1, 23, 24),
-    new Course('Spanish', 2, 24, 15),
-    new Course('Jazz Band', 3, 25, 15),
-    new Course('Engineering', 4, 26, 15),
-    new Course('Chemistry', 4, 26, 15),
-    new Course('Computer Programming 2', 4, 26, 15),
+    new Course(1, 'English 1010', 1, 23, 24),
+    new Course(2, 'Spanish', 2, 24, 15),
+    new Course(3, 'Jazz Band', 3, 25, 15),
+    new Course(4, 'Engineering', 4, 26, 15),
+    new Course(5, 'Chemistry', 4, 26, 15),
+    new Course(6, 'Computer Programming 2', 4, 26, 15),
 
   ];
 
@@ -27,5 +28,9 @@ export class CourseService {
 
   public getCourses(): Observable<Course[]> {
     return Observable.from(this.courses).toArray();
+  }
+
+  public getCourse(id: number): Observable<Course> {
+    return Observable.of(this.courses.find(item => item.id === id));
   }
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AssignmentService, Assignment} from '../../services/assignment/assignment.service';
 import { StudentService, Student} from '../../services/student/student.service';
+import {CourseService} from '../../services/course/course.service';
+
 
 
 
@@ -15,7 +17,8 @@ export class AssignmentsComponent implements OnInit {
 
   constructor(
     private assignmentService: AssignmentService,
-    public studentService: StudentService
+    public studentService: StudentService,
+    public courseService: CourseService,
   ) { }
 
   ngOnInit() {

@@ -8,7 +8,7 @@ export class Assignment {
               public student: number,
               public score: number,
               public outOf: number,
-              public dueDate: string,) {
+              public dueDate: string) {
   }
 }
 
@@ -17,10 +17,11 @@ export class AssignmentService {
 
   private assignments: Assignment[] = [
     new Assignment('Argument Essay', 1, 1, 0, 100, '04/21'),
-    new Assignment('Sectionals', 1, 3, 0, 60, '04/20'),
-    new Assignment('Spanish Story', 1, 2, 0, 20, '04/15'),
-    new Assignment('Balancing Reactions', 1, 4, 0, 77, '04/22'),
-    new Assignment('POE Math stuff', 1, 1, 0, 1022, '05/06')
+    new Assignment('Sectionals', 3, 3, 0, 60, '04/20'),
+    new Assignment('Spanish Story', 2, 2, 0, 20, '04/15'),
+    new Assignment('Balancing Reactions', 5, 4, 0, 77, '04/22'),
+    new Assignment('POE Math stuff', 4, 1, 0, 1022, '05/06'),
+    new Assignment('Binary Tree', 6, 1, 0, 1022, '05/06')
   ];
 
   constructor() {

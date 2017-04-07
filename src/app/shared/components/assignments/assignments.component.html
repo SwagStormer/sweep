@@ -2,17 +2,17 @@
 
 <div class="container">
   <table>
-    <!-- <tr>
-      <th>Student</th>
-      <th>Due</th>
-      <th>Grade</th>
-    </tr> -->
     <tr class="assignment" *ngFor="let assignment of assignments">
 
       <td>{{assignment.dueDate}}</td>
-      <td>{{assignment.name}}</td>
+      <td>{{(courseService.getCourse(assignment.course) | async)?.name}}: {{assignment.name}}</td>
       <td>{{(studentService.getStudent(assignment.student) | async)?.name}}</td>
-      <td>{{assignment.score}}/{{assignment.outOf}}</td>
+
+      <td>
+        <button md-button>
+          {{assignment.score}}/{{assignment.outOf}}
+        </button>
+      </td>
     </tr>
   </table>
 </div>
