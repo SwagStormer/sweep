@@ -3,6 +3,6 @@
 <div class="container">
   <div class="assignment" *ngFor="let assignment of assignments">
     <div class="assignment__dueDate">{{assignment.dueDate}}</div>
-    <div class="assignment__dueDate">{{assignment.dueDate}}</div>
+    <div class="assignment__student">{{(studentService.getStudent(assignment.student) | async).name}}</div>
   </div>
 </div>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AssignmentService, Assignment} from '../../services/assignment/assignment.service';
+import { StudentService, Student} from '../../services/student/student.service';
+
 
 
 @Component({
@@ -11,7 +13,10 @@ export class AssignmentsComponent implements OnInit {
 
   private assignments: Assignment[] = []
 
-  constructor(private assignmentService: AssignmentService) { }
+  constructor(
+    private assignmentService: AssignmentService,
+    private studentService: StudentService
+  ) { }
 
   ngOnInit() {
     this.assignmentService.getAssignments().subscribe(assignments => {
