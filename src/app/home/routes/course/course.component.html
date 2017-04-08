@@ -1,3 +1,23 @@
-<p>
-  course works!
-</p>
+<div *ngIf="course" class="container">
+  <div class="container__header">{{course.name}}</div>
+  <md-tab-group>
+    <md-tab label="Students">
+      <app-students-course [course]="course.id"></app-students-course>
+    </md-tab>
+    <md-tab label="Assignments">
+      <div class="assignment-header">{{course.name}}'s Assignments</div>
+      <md-tab-group>
+        <md-tab label="Needs Grading">
+          <app-assignment-submissions-course [course]="course.id"></app-assignment-submissions-course>
+        </md-tab>
+        <md-tab label="Assigned">
+          <app-assignment-course [course]="course.id"></app-assignment-course>
+        </md-tab>
+        <md-tab label="Graded">
+          <app-assignment-submissions-course [course]="course.id" [graded]="true"></app-assignment-submissions-course>
+        </md-tab>
+      </md-tab-group>
+
+    </md-tab>
+  </md-tab-group>
+</div>

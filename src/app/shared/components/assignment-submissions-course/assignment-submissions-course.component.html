@@ -1,0 +1,26 @@
+<div class="header" *ngIf="!_graded">Assignments to be graded</div>
+<div class="header" *ngIf="_graded">Graded assignments</div>
+
+<div class="container">
+  <div class="container__header">
+    <md-icon>search</md-icon>
+    <md-input-container>
+      <input mdInput placeholder="Search" [(ngModel)]="searchText" (ngModelChange)="search($event)">
+    </md-input-container>
+  </div>
+  <table>
+    <tr class="assignment" *ngFor="let assignment of assignments">
+      <td>{{(assignmentService.getAssignment(assignment.assignment) | async)?.dueBy}}</td>
+      <td>
+        {{(assignmentSubmissionService.getSubmissionCourse(assignment.id) | async)?.name}}: {{(assignmentService.getAssignment(assignment.assignment) | async)?.name}}
+      </td>
+      <td>{{(studentService.getStudent(assignment.student) | async)?.name}}</td>
+
+      <td>
+        <button md-button>
+          {{assignment.score}}/{{(assignmentService.getAssignment(assignment.assignment) | async)?.outOf}}
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>

@@ -1,8 +1,11 @@
 <div class="header">Your Courses</div>
 <div class="container">
-  <md-card *ngFor="let course of courses">
+  <md-card *ngFor="let course of courses" (click)="navigate(course.id)">
     <md-card-title>{{course.name}}</md-card-title>
     <md-card-subtitle>{{course.numberOfStudents}} students</md-card-subtitle>
+    <md-card-subtitle>
+      {{(assignmentSubmissionService.getCourseAssignments(course.id)|async)?.length}} Ungraded Assignment(s)
+    </md-card-subtitle>
 
     <md-card-actions>
       <button md-button color="accent">Speed Grade</button>

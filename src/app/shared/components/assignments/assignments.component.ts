@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AssignmentService, Assignment} from '../../services/assignment/assignment.service';
+import { AssignmentSubmissionService, AssignmentSubmission} from '../../services/assignment/assignment-submission.service';
 import { StudentService, Student} from '../../services/student/student.service';
 import {CourseService} from '../../services/course/course.service';
-
-
-
+import {Assignment, AssignmentService} from "../../services/assignment/assignment.service";
 
 @Component({
   selector: 'app-assignments',
@@ -14,6 +12,8 @@ import {CourseService} from '../../services/course/course.service';
 export class AssignmentsComponent implements OnInit {
 
   public assignments: Assignment[] = [];
+  public searchText: string;
+  public lastSearched: number;
 
   constructor(
     private assignmentService: AssignmentService,
@@ -26,6 +26,28 @@ export class AssignmentsComponent implements OnInit {
       this.assignments = assignments;
     });
 
+  }
+
+  updateList(search: string) {
+    this.assignmentService.filterAssignments(search).subscribe(x => {
+      this.assignments = x;
+    });
+  }
+
+
+
+  public search(event) {
+    const d = new Date();
+    this.lastSearched = d.getMilliseconds();
+    this.checkDebounce(this.lastSearched, event);
+  }
+
+  private checkDebounce(time: any, event: any) {
+    setTimeout(() => {
+      if (time === this.lastSearched) {
+        this.updateList(this.searchText);
+      }
+    }, 350);
   }
 
 

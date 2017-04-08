@@ -14,6 +14,8 @@ import { DashboardComponent } from './home/routes/dashboard/dashboard.component'
 import { CourseComponent } from './home/routes/course/course.component';
 import { CookieService } from 'angular2-cookie/core';
 import {CanActivateViaAuthGuard} from './shared/services/auth/auth.service';
+import { AssignmentComponent } from './home/routes/assignment/assignment.component';
+import { GradeComponent } from './home/routes/grade/grade.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import {CanActivateViaAuthGuard} from './shared/services/auth/auth.service';
     LoginComponent,
     DashboardComponent,
     CourseComponent,
+    AssignmentComponent,
+    GradeComponent,
   ],
   imports: [
     BrowserModule,
