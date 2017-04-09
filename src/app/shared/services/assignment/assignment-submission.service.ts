@@ -11,7 +11,9 @@ export class AssignmentSubmission {
               public assignment: number,
               public student: number,
               public score: number,
-              public graded: boolean) {
+              public body: string,
+              public graded: boolean,
+              public comments: string) {
   }
 }
 
@@ -19,12 +21,15 @@ export class AssignmentSubmission {
 export class AssignmentSubmissionService {
 
   private assignments: AssignmentSubmission[] = [
-    new AssignmentSubmission(1, 1, 1, 0, false),
-    new AssignmentSubmission(3, 3, 3, 0, false),
-    new AssignmentSubmission(2, 2, 2, 0, false),
-    new AssignmentSubmission(4, 5, 4, 0, false),
-    new AssignmentSubmission(5, 4, 1, 0, false),
-    new AssignmentSubmission(6, 6, 1, 0, false)
+    new AssignmentSubmission(
+      1, 1, 1, 0,
+      'It is all fake news. My alternative facts are better than yours. Argument finished',
+      false, ''),
+    new AssignmentSubmission(3, 3, 3, 0, '', false, ''),
+    new AssignmentSubmission(2, 2, 2, 0, '', false, ''),
+    new AssignmentSubmission(4, 5, 4, 0, '', false, ''),
+    new AssignmentSubmission(5, 4, 1, 0, '', false, ''),
+    new AssignmentSubmission(6, 6, 1, 0, '', false, '')
   ];
 
   constructor(
@@ -34,8 +39,8 @@ export class AssignmentSubmissionService {
   ) {
   }
 
-  public getAssignments(): Observable<AssignmentSubmission[]> {
-    return Observable.from(this.assignments).toArray();
+  public getAssignment(id: number): Observable<AssignmentSubmission> {
+    return Observable.of(this.assignments.find(assignment => assignment.id === id));
   }
 
   public getUngradedAssignments(): Observable<AssignmentSubmission[]> {
@@ -45,6 +50,44 @@ export class AssignmentSubmissionService {
   public getGradedAssignments(): Observable<AssignmentSubmission[]> {
     return Observable.from(this.assignments.filter(assignment => assignment.graded)).toArray();
   }
+
+  public getNextAssignment(id: number): Observable<AssignmentSubmission|null> {
+    let index = this.assignments.indexOf(this.assignments.find(assignment => assignment.id === id));
+    if (index < this.assignments.length - 1) {
+      return Observable.of(this.assignments[++index]);
+    }
+    return Observable.of(null);
+  }
+
+  public gradeAssignment(assignmentSubmission: AssignmentSubmission) {
+    const index = this.assignments.indexOf(this.assignments.find(assignment => assignment.id === assignmentSubmission.id));
+    assignmentSubmission.graded = true;
+    this.assignments[index] = assignmentSubmission;
+  }
+
+  public filterAssignments(name: string, graded: boolean) {
+    return Observable.from(this.assignmentService.filterAssignments(name)).flatMap(assignments => {
+      const filteredAssignments = !graded ?
+        assignments.map(assignment => this.assignments.find(a => a.assignment === assignment.id)) :
+        assignments.map(assignment => this.assignments.find(a => a.assignment === assignment.id && a.graded));
+      filteredAssignments.forEach(elem => {
+        if (elem === undefined) {
+          filteredAssignments.splice(filteredAssignments.indexOf(elem));
+        }
+      });
+      return this.studentService.filterByName(name).map(students => {
+        let arr = [];
+        students.forEach(student => {
+          arr = Array().concat(...this.assignments.filter(assignment => assignment.student === student.id));
+        });
+        return Array().concat(arr, filteredAssignments);
+      });
+    });
+  }
+
+  //////////////////////
+  // Foreign Key Crap //
+  //////////////////////
 
   public getSubmissionCourse(submissionId: number): Observable<Course> {
     return Observable.of(this.assignments.find(assignment => assignment.id === submissionId))
@@ -74,26 +117,6 @@ export class AssignmentSubmissionService {
   public getUngradedStudentAssignments(studentId: number): Observable<AssignmentSubmission[]> {
     return Observable.from(this.assignments.filter(assignment =>
       assignment.student === studentId && !assignment.graded )).toArray();
-  }
-
-  public filterAssignments(name: string, graded: boolean) {
-    return Observable.from(this.assignmentService.filterAssignments(name)).flatMap(assignments => {
-      const filteredAssignments = !graded ?
-        assignments.map(assignment => this.assignments.find(a => a.assignment === assignment.id)) :
-        assignments.map(assignment => this.assignments.find(a => a.assignment === assignment.id && a.graded));
-      filteredAssignments.forEach(elem => {
-        if (elem === undefined) {
-          filteredAssignments.splice(filteredAssignments.indexOf(elem));
-        }
-      });
-      return this.studentService.filterByName(name).map(students => {
-        let arr = [];
-        students.forEach(student => {
-          arr = Array().concat(...this.assignments.filter(assignment => assignment.student === student.id));
-        });
-        return Array().concat(arr, filteredAssignments);
-      });
-    });
   }
 
 }

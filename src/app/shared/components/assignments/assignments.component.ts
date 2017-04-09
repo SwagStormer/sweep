@@ -3,6 +3,7 @@ import { AssignmentSubmissionService, AssignmentSubmission} from '../../services
 import { StudentService, Student} from '../../services/student/student.service';
 import {CourseService} from '../../services/course/course.service';
 import {Assignment, AssignmentService} from "../../services/assignment/assignment.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-assignments',
@@ -19,6 +20,7 @@ export class AssignmentsComponent implements OnInit {
     private assignmentService: AssignmentService,
     public studentService: StudentService,
     public courseService: CourseService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -34,7 +36,9 @@ export class AssignmentsComponent implements OnInit {
     });
   }
 
-
+  public navigateToDetail(id: number) {
+    this.router.navigate(['assignment', id]);
+  }
 
   public search(event) {
     const d = new Date();

@@ -5,9 +5,10 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './home/routes/dashboard/dashboard.component';
 import {CanActivateViaAuthGuard} from './shared/services/auth/auth.service';
 import {StudentsComponent} from './shared/components/students/students.component';
-import {AssignmentComponent} from './home/routes/assignment/assignment.component';
+import {AssignmentsComponent} from './home/routes/assignments/assignments.component';
 import {CourseComponent} from './home/routes/course/course.component';
-import {GradeComponent} from "./home/routes/grade/grade.component";
+import {GradeComponent} from './home/routes/grade/grade.component';
+import {AssignmentComponent} from './home/routes/assignment/assignment.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
       },
       {
         path: 'assignments',
+        component: AssignmentsComponent
+      },
+      {
+        path: 'assignment/:id',
         component: AssignmentComponent
       },
       {
@@ -37,7 +42,7 @@ const routes: Routes = [
         component: StudentsComponent
       },
       {
-        path: 'grade/:id',
+        path: 'grade',
         component: GradeComponent
       }
     ]

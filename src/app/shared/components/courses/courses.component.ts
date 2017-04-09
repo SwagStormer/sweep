@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CourseService, Course } from '../../services/course/course.service';
-import {AssignmentSubmissionService} from "../../services/assignment/assignment-submission.service";
-import {Router} from "@angular/router";
+import {AssignmentSubmissionService} from '../../services/assignment/assignment-submission.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-courses',
@@ -25,6 +25,11 @@ export class CoursesComponent implements OnInit {
 
   navigate(id: number) {
     this.router.navigate(['course', id]);
+  }
+
+  speedGrade(id: number, event) {
+    event.stopPropagation();
+    this.router.navigate(['grade'], { queryParams: {course: id}});
   }
 
 }

@@ -13,7 +13,7 @@ import {Router} from '@angular/router';
 export class AssignmentSubmissionsComponent implements OnInit {
 
   @Input() synopsis = false;
-  private _graded = false;
+  public _graded = false;
   @Input() set graded(value) {
     this._graded = value;
     this.ngOnInit();
@@ -54,6 +54,10 @@ export class AssignmentSubmissionsComponent implements OnInit {
     this.router.navigate(['assignments']);
   }
 
+  public navigateToDetail(id: number) {
+    this.router.navigate(['grade'], { queryParams: {submission: id}});
+  }
+
   updateList(search: string) {
     this.assignmentSubmissionService.filterAssignments(search, this._graded).subscribe(x => {
       this.assignments = x;
@@ -65,15 +69,16 @@ export class AssignmentSubmissionsComponent implements OnInit {
   public search(event) {
     const d = new Date();
     this.lastSearched = d.getMilliseconds();
-    this.checkDebounce(this.lastSearched, event);
+    this.checkDebounce(this.lastSearched);
   }
 
-  private checkDebounce(time: any, event: any) {
+  private checkDebounce(time: any ) {
     setTimeout(() => {
       if (time === this.lastSearched) {
         this.updateList(this.searchText);
       }
     }, 350);
   }
+
 
 }

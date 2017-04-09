@@ -1,3 +1,28 @@
-<p>
-  grade works!
-</p>
+<div class="container" *ngIf="submission">
+  <div class="container__header">
+    {{(assignmentService.getAssignment(submission.assignment) | async)?.name}} -
+    {{(studentService.getStudent(submission.student) | async)?.name}}
+  </div>
+  <div class="submission">
+    <div class="submission__body-header">Submission Body:</div>
+    <div class="submission__body">{{submission.body}}</div>
+    <md-input-container class="submission__score" floatPlaceholder="never">
+      <span mdPrefix>Score:</span>
+      <input mdInput placeholder="{{submission.score}}" [(ngModel)]="submission.score">
+      <span mdSuffix>/ {{(assignmentService.getAssignment(submission.id) | async)?.outOf}}</span>
+    </md-input-container>
+    <md-input-container class="submission__comments" >
+      <textarea mdInput placeholder="Submission Comments" rows="8" [(ngModel)]="submission.comments"></textarea>
+    </md-input-container>
+    <button
+      *ngIf="!submission.graded"
+      md-raised-button color="accent"
+      (click)="submit()"
+      class="submission__grade">Grade</button>
+    <button
+      *ngIf="submission.graded"
+      md-raised-button color="accent"
+      (click)="submit()"
+      class="submission__grade">Save</button>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<md-tab-group>
+  <md-tab label="Needs Grading">
+    <app-assignment-submissions></app-assignment-submissions>
+  </md-tab>
+  <md-tab label="Assigned">
+    <app-assignments></app-assignments>
+  </md-tab>
+  <md-tab label="Graded">
+    <app-assignment-submissions [graded]="true"></app-assignment-submissions>
+  </md-tab>
+</md-tab-group>

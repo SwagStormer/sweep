@@ -8,7 +8,7 @@
     </md-input-container>
   </div>
   <table>
-    <tr class="assignment" *ngFor="let assignment of assignments">
+    <tr class="assignment" *ngFor="let assignment of assignments" (click)="navigateToDetail(assignment.id)">
       <td>{{assignment.name}}</td>
       <td>{{assignment.dueBy}}</td>
     </tr>

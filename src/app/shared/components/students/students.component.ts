@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Student, StudentService} from '../../services/student/student.service';
 import {AssignmentSubmissionService} from '../../services/assignment/assignment-submission.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-students',
@@ -15,12 +16,19 @@ export class StudentsComponent implements OnInit {
 
   constructor(
     public studentService: StudentService,
-    public assignmentSubmissionService: AssignmentSubmissionService) { }
+    public assignmentSubmissionService: AssignmentSubmissionService,
+    private router: Router) { }
 
   ngOnInit() {
     this.studentService.getStudents().subscribe(students => {
       this.students = students;
     });
+  }
+
+  public navigateToSubmission(id: number, event) {
+    event.stopPropagation();
+    console.log(id);
+    this.router.navigate(['grade'], {queryParams: {student: id}});
   }
 
   private updateList(name: string) {

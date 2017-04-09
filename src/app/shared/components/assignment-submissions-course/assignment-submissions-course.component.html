@@ -9,7 +9,7 @@
     </md-input-container>
   </div>
   <table>
-    <tr class="assignment" *ngFor="let assignment of assignments">
+    <tr class="assignment" *ngFor="let assignment of assignments" (click)="navigateToDetail(assignment.id)">
       <td>{{(assignmentService.getAssignment(assignment.assignment) | async)?.dueBy}}</td>
       <td>
         {{(assignmentSubmissionService.getSubmissionCourse(assignment.id) | async)?.name}}: {{(assignmentService.getAssignment(assignment.assignment) | async)?.name}}

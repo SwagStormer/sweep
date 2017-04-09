@@ -12,7 +12,7 @@
         {{(assignmentSubmissionService.getUngradedStudentAssignments(student.id)|async)?.length}} Ungraded assignments
       </md-card-subtitle>
       <md-card-actions>
-        <button md-button color="accent">Grade Assignments</button>
+        <button md-button color="accent" (click)="navigateToSubmission(student.id, $event)">Grade Assignments</button>
       </md-card-actions>
     </md-card>
   </div>

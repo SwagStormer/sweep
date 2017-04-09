@@ -18,8 +18,8 @@ export class AssignmentService {
 
   private assignments: Assignment[] = [
     new Assignment(1, 'Argument Essay', 1, 100, '04/12'),
-    new Assignment(2, 'Spanish Story', 3, 100, '03/04'),
-    new Assignment(3, 'Sectionals', 2, 100, '05/11'),
+    new Assignment(2, 'Spanish Story', 2, 100, '03/04'),
+    new Assignment(3, 'Sectionals', 3, 100, '05/11'),
     new Assignment(4, 'Balancing Reactions', 4, 100, '03/22'),
     new Assignment(5, 'Inventor Cert', 1, 100, '03/23'),
     new Assignment(6, 'Binary Tree', 1, 100, '02/11'),

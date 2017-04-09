@@ -6,6 +6,7 @@ import {
 import {AssignmentService} from '../../services/assignment/assignment.service';
 import {StudentService} from '../../services/student/student.service';
 import {CourseService} from '../../services/course/course.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-assignment-submissions-course',
@@ -38,10 +39,15 @@ export class AssignmentSubmissionsCourseComponent implements OnInit {
     public assignmentService: AssignmentService,
     public studentService: StudentService,
     public courseService: CourseService,
+    private router: Router
   ) { }
 
   ngOnInit() {
 
+  }
+
+  public navigateToDetail(id: number) {
+    this.router.navigate(['grade'], { queryParams: { submission: id}});
   }
 
   getAssignments() {

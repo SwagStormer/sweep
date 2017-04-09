@@ -5,19 +5,13 @@
       <app-students-course [course]="course.id"></app-students-course>
     </md-tab>
     <md-tab label="Assignments">
-      <div class="assignment-header">{{course.name}}'s Assignments</div>
-      <md-tab-group>
-        <md-tab label="Needs Grading">
-          <app-assignment-submissions-course [course]="course.id"></app-assignment-submissions-course>
-        </md-tab>
-        <md-tab label="Assigned">
-          <app-assignment-course [course]="course.id"></app-assignment-course>
-        </md-tab>
-        <md-tab label="Graded">
-          <app-assignment-submissions-course [course]="course.id" [graded]="true"></app-assignment-submissions-course>
-        </md-tab>
-      </md-tab-group>
-
+      <app-assignment-course [course]="course.id"></app-assignment-course>
+    </md-tab>
+    <md-tab label="Ungraded Submissions">
+      <app-assignment-submissions-course [course]="course.id"></app-assignment-submissions-course>
+    </md-tab>
+    <md-tab label="Graded Submissions">
+      <app-assignment-submissions-course [course]="course.id" [graded]="true"></app-assignment-submissions-course>
     </md-tab>
   </md-tab-group>
 </div>
