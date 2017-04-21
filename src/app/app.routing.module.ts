@@ -7,6 +7,7 @@ import { CourseComponent } from './home/routes/course/course.component';
 import { GradeComponent } from './home/routes/grade/grade.component';
 import { AssignmentsComponent } from './home/routes/assignments/assignments.component';
 import { AssignmentComponent } from './home/routes/assignment/assignment.component';
+import {StudentsComponent} from "./home/routes/students/students.component";
 const routes: Routes = [
   {
     path: '',
@@ -16,6 +17,7 @@ const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'course', component: CourseComponent },
       { path: 'grade', component: GradeComponent },
+      { path: 'my-students', component: StudentsComponent },
       { path: 'assignments', component: AssignmentsComponent },
       { path: 'assignment', component: AssignmentComponent }
     ]

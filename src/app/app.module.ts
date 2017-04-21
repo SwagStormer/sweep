@@ -9,12 +9,17 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { CoursesComponent } from './home/routes/courses/courses.component';
 import { CourseComponent } from './home/routes/course/course.component';
 import { AssignmentComponent } from './home/routes/assignment/assignment.component';
 import { GradeComponent } from './home/routes/grade/grade.component';
 import { AssignmentsComponent } from './home/routes/assignments/assignments.component';
 import { DashboardComponent } from './home/routes/dashboard/dashboard.component';
+import { AssignmentSubmissionsComponent } from './shared/components/assignment-submissions/assignment-submissions.component';
+import { PeriodsComponent } from './shared/components/periods/periods.component';
+import { CoursesTableComponent } from './shared/components/courses-table/courses-table.component';
+import { StudentsTableComponent } from './shared/components/students-table/students-table.component';
+import {StudentsComponent} from './home/routes/students/students.component';
+import { AssignmentsTableComponent } from './shared/components/assignments-table/assignments-table.component';
 
 @NgModule({
   declarations: [
@@ -22,11 +27,16 @@ import { DashboardComponent } from './home/routes/dashboard/dashboard.component'
     HomeComponent,
     LoginComponent,
     DashboardComponent,
-    CoursesComponent,
     CourseComponent,
     AssignmentComponent,
     GradeComponent,
-    AssignmentsComponent
+    AssignmentsComponent,
+    AssignmentSubmissionsComponent,
+    PeriodsComponent,
+    CoursesTableComponent,
+    StudentsTableComponent,
+    StudentsComponent,
+    AssignmentsTableComponent,
   ],
   imports: [
     BrowserModule,
