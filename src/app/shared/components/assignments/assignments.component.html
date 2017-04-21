@@ -9,8 +9,10 @@
   </div>
   <table>
     <tr class="assignment" *ngFor="let assignment of assignments" (click)="navigateToDetail(assignment.id)">
-      <td>{{assignment.name}}</td>
-      <td>{{assignment.dueBy}}</td>
+      <td>
+        {{(assignmentSubmissionService.getSubmissionCourse(assignment.id) | async)?.name}}: {{assignment.name}}
+      </td>
+      <td>{{assignment.dueBy | date}}</td>
 
     </tr>
   </table>

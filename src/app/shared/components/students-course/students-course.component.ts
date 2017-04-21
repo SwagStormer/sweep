@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Student, StudentService} from '../../services/student/student.service';
 import {AssignmentSubmissionService} from '../../services/assignment/assignment-submission.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-students-course',
@@ -22,7 +23,8 @@ export class StudentsCourseComponent implements OnInit {
 
   constructor(
     private studentService: StudentService,
-    public assignmentSubmissionService: AssignmentSubmissionService
+    public assignmentSubmissionService: AssignmentSubmissionService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -30,10 +32,18 @@ export class StudentsCourseComponent implements OnInit {
 
   getStudents() {
     this.studentService.getStudentsByClass(this._course).subscribe(students => {
-      console.log(students);
       this.permanentArray = students;
       this.students = students;
     });
+  }
+
+  public navigateToSubmission(id: number, event) {
+    event.stopPropagation();
+    this.router.navigate(['grade'], {queryParams: {student: id}});
+  }
+
+  public navigateToDetail(id: number) {
+    this.router.navigate(['student', id]);
   }
 
   filterStudents(name: string) {

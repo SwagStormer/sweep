@@ -1,13 +1,12 @@
-import {Injectable} from '@angular/core';
-import {Observable } from 'rxjs/Rx';
-import {StudentService} from '../student/student.service';
-import {Assignment, AssignmentService} from './assignment.service';
-import {Course, CourseService} from '../course/course.service';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
+import { StudentService } from '../student/student.service';
+import { Assignment, AssignmentService } from './assignment.service';
+import { Course, CourseService } from '../course/course.service';
 
 
 export class AssignmentSubmission {
-  constructor(
-              public id: number,
+  constructor(public id: number,
               public assignment: number,
               public student: number,
               public score: number,
@@ -32,11 +31,14 @@ export class AssignmentSubmissionService {
     new AssignmentSubmission(6, 6, 1, 0, '', false, '')
   ];
 
-  constructor(
-    private assignmentService: AssignmentService,
-    private studentService: StudentService,
-    private courseService: CourseService
-  ) {
+  constructor(private assignmentService: AssignmentService,
+              private studentService: StudentService,
+              private courseService: CourseService) {
+  }
+
+  public addAssignmentSubmission(submission: AssignmentSubmission) {
+    submission.id = this.assignments.length + 1;
+    this.assignments.push(submission);
   }
 
   public getAssignment(id: number): Observable<AssignmentSubmission> {
@@ -51,7 +53,7 @@ export class AssignmentSubmissionService {
     return Observable.from(this.assignments.filter(assignment => assignment.graded)).toArray();
   }
 
-  public getNextAssignment(id: number): Observable<AssignmentSubmission|null> {
+  public getNextAssignment(id: number): Observable<AssignmentSubmission | null> {
     let index = this.assignments.indexOf(this.assignments.find(assignment => assignment.id === id));
     if (index < this.assignments.length - 1) {
       return Observable.of(this.assignments[++index]);
@@ -81,6 +83,14 @@ export class AssignmentSubmissionService {
           arr = Array().concat(...this.assignments.filter(assignment => assignment.student === student.id));
         });
         return Array().concat(arr, filteredAssignments);
+      });
+    });
+  }
+
+  public generateFakeSubmissions(assignmentId) {
+    this.studentService.getRandomStudents().subscribe(students => {
+      students.forEach(student => {
+        this.addAssignmentSubmission(new AssignmentSubmission(-1, assignmentId, student.id, 0, '', false, ''));
       });
     });
   }
@@ -116,7 +126,12 @@ export class AssignmentSubmissionService {
 
   public getUngradedStudentAssignments(studentId: number): Observable<AssignmentSubmission[]> {
     return Observable.from(this.assignments.filter(assignment =>
-      assignment.student === studentId && !assignment.graded )).toArray();
+    assignment.student === studentId && !assignment.graded)).toArray();
   }
+
+  public getSubmissionsForAssignment(assignmentId: number): Observable<AssignmentSubmission[]> {
+    return Observable.from(this.assignments.filter(assignment => assignment.assignment === assignmentId)).toArray();
+  }
+
 
 }

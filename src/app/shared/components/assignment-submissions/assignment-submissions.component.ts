@@ -42,7 +42,6 @@ export class AssignmentSubmissionsComponent implements OnInit {
       this.assignmentSubmissionService.getUngradedAssignments().subscribe(assignments => {
         if (this.synopsis) {
           this.assignments = assignments.slice(0, 3);
-          console.log(this.assignments);
         } else {
           this.assignments = assignments;
         }

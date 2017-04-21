@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AssignmentSubmissionService, AssignmentSubmission} from '../../services/assignment/assignment-submission.service';
 import { StudentService, Student} from '../../services/student/student.service';
 import {CourseService} from '../../services/course/course.service';
-import {Assignment, AssignmentService} from "../../services/assignment/assignment.service";
-import {Router} from "@angular/router";
+import {Assignment, AssignmentService} from '../../services/assignment/assignment.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-assignments',
@@ -18,6 +18,7 @@ export class AssignmentsComponent implements OnInit {
 
   constructor(
     private assignmentService: AssignmentService,
+    public assignmentSubmissionService: AssignmentSubmissionService,
     public studentService: StudentService,
     public courseService: CourseService,
     private router: Router

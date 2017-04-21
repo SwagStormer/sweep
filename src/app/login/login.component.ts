@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Slide } from '../animations/slide';
-import { State } from '../animations/state';
-import { AuthService} from '../shared/services/auth/auth.service'
+import { AuthService} from '../shared/services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,14 +9,14 @@ import { AuthService} from '../shared/services/auth/auth.service'
 })
 export class LoginComponent implements OnInit {
 
-  private loginToggled: boolean = true;
+  public loginToggled = true;
 
-  private user = {
+  public user = {
     username: '',
     password: '',
   };
 
-  private signUpUser = {
+  public signUpUser = {
     username: '',
     password: '',
     passwordConfirm: '',
@@ -34,31 +32,27 @@ export class LoginComponent implements OnInit {
 
 
   toggleLogin() {
-    this.loginToggled = !this.loginToggled
+    this.loginToggled = !this.loginToggled;
   }
 
   login() {
-    // 1 == "1" true
-    // 1 === "1" false
-    // 1 === 1 true
-    if (this.user.username === ''){
+    if (this.user.username === '') {
       this.auth.login(this.signUpUser.username);
-    }
-    else{
+    } else {
       this.auth.login(this.user.username);
     }
-    this.router.navigate([''])
+    this.router.navigate(['']);
   }
 
   loginValid() {
-    return this.user.username !== "" && this.user.password !== "";
+    return this.user.username !== '' && this.user.password !== '';
   }
 
   signUpValid() {
-    return this.signUpUser.username !== "" &&
-      this.signUpUser.password !== "" &&
-      this.signUpUser.passwordConfirm !== "" &&
-      this.signUpUser.code !== "" &&
+    return this.signUpUser.username !== '' &&
+      this.signUpUser.password !== '' &&
+      this.signUpUser.passwordConfirm !== '' &&
+      this.signUpUser.code !== '' &&
       this.signUpUser.password === this.signUpUser.passwordConfirm;
   }
 

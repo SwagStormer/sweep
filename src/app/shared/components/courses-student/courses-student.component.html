@@ -2,7 +2,7 @@
 <div class="container">
   <md-card *ngFor="let course of courses" (click)="navigate(course.id)">
     <md-card-title>{{course.name}}</md-card-title>
-    <md-card-subtitle>{{(studentService.getStudentsByClass(course.id) | async)?.length}} students</md-card-subtitle>
+    <md-card-subtitle>{{course.numberOfStudents}} students</md-card-subtitle>
     <md-card-subtitle>
       {{(assignmentSubmissionService.getCourseAssignments(course.id)|async)?.length}} Ungraded Assignment(s)
     </md-card-subtitle>

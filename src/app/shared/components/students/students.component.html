@@ -6,7 +6,7 @@
     </md-input-container>
   </div>
   <div class="students">
-    <md-card *ngFor="let student of students">
+    <md-card *ngFor="let student of students" (click)="navigateToDetail(student.id)" [@collapse]="state">
       <md-card-title>{{student.name}}</md-card-title>
       <md-card-subtitle>
         {{(assignmentSubmissionService.getUngradedStudentAssignments(student.id)|async)?.length}} Ungraded assignments

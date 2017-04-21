@@ -7,6 +7,7 @@ export class Assignment {
   constructor(
     public id: number,
     public name: string,
+    public instructions: string,
     public course: number,
     public outOf: number,
     public dueBy: string
@@ -17,19 +18,17 @@ export class Assignment {
 export class AssignmentService {
 
   private assignments: Assignment[] = [
-    new Assignment(1, 'Argument Essay', 1, 100, '04/12'),
-    new Assignment(2, 'Spanish Story', 2, 100, '03/04'),
-    new Assignment(3, 'Sectionals', 3, 100, '05/11'),
-    new Assignment(4, 'Balancing Reactions', 4, 100, '03/22'),
-    new Assignment(5, 'Inventor Cert', 1, 100, '03/23'),
-    new Assignment(6, 'Binary Tree', 1, 100, '02/11'),
-    new Assignment(7, '', 1, 100, '04/11'),
-    new Assignment(8, '', 1, 100, '03/11')
+    new Assignment(1, 'Argument Essay', 'Argue about Donald Trump', 1, 100, '04/12/17'),
+    new Assignment(2, 'Spanish Story', 'Write a story in spanish', 2, 100, '03/04/17'),
+    new Assignment(3, 'Sectionals', 'Work festival tunes as a section', 3, 100, '05/11/17'),
+    new Assignment(4, 'Balancing Reactions', 'Balance the reactions given', 4, 100, '03/22/17'),
+    new Assignment(5, 'Inventor Cert', 'Finish the Inventor certification test', 1, 100, '03/23/17'),
+    new Assignment(6, 'Binary Tree', 'Write searching and sorting for teh binary tree functions', 1, 100, '02/11/17'),
   ];
 
   constructor(
     private courseService: CourseService,
-    private studentService: StudentService
+    private studentService: StudentService,
   ) { }
 
   public getAssignments(): Observable<Assignment[]> {
@@ -50,6 +49,10 @@ export class AssignmentService {
     ).toArray();
   }
 
-  public createAssignment() {}
+  public createAssignment(assignment: Assignment): Observable<Assignment> {
+    assignment.id = this.assignments.length + 1;
+    this.assignments.push(assignment);
+    return Observable.of(assignment);
+  }
 
 }

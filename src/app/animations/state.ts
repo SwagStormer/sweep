@@ -1,7 +1,7 @@
 
 export class State {
 
-  private isFirstState: boolean = true;
+  private isFirstState = true;
 
   constructor(
     private firstState: string,
@@ -15,7 +15,7 @@ export class State {
     return !this.isFirstState;
   }
 
-  public toggle(){
+  public toggle() {
     this.isFirstState = !this.isFirstState;
   }
 }

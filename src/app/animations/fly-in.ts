@@ -1,4 +1,3 @@
-import { Animation } from './animation'
 import {
   trigger,
   state,
@@ -12,10 +11,7 @@ import {
 /////////////////////////
 
 
-export class FlyIn extends Animation {
-  description = "Enter in from the left";
-  self(): any {
-    return trigger('flyIn', [
+export const flyIn = trigger('flyIn', [
       transition(':enter', [
         style({transform: 'translateX(-100%)'}),
         animate(100)
@@ -23,6 +19,6 @@ export class FlyIn extends Animation {
       transition(':leave', [
         animate(100, style({transform: 'translateX(-100%)'}))
       ])
-    ])
-  }
-}
+    ]);
+
+

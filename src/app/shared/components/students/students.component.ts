@@ -2,17 +2,22 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Student, StudentService} from '../../services/student/student.service';
 import {AssignmentSubmissionService} from '../../services/assignment/assignment-submission.service';
 import {Router} from "@angular/router";
+import { collapse } from '../../../animations/collapse';
 
 @Component({
   selector: 'app-students',
   templateUrl: './students.component.html',
-  styleUrls: ['./students.component.scss']
+  styleUrls: ['./students.component.scss'],
+  animations: [
+    collapse
+  ]
 })
 export class StudentsComponent implements OnInit {
 
   public students: Student[] = [];
   public lastSearched: number;
   public searchText: string;
+  public state = '';
 
   constructor(
     public studentService: StudentService,
@@ -27,8 +32,11 @@ export class StudentsComponent implements OnInit {
 
   public navigateToSubmission(id: number, event) {
     event.stopPropagation();
-    console.log(id);
     this.router.navigate(['grade'], {queryParams: {student: id}});
+  }
+
+  public navigateToDetail(id: number) {
+    this.router.navigate(['student', id]);
   }
 
   private updateList(name: string) {

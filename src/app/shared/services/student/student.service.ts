@@ -29,6 +29,8 @@ export class StudentService {
     new Student(14, 'Ellen	Ballard', [1]),
     new Student(15, 'Leona	Howard', [1, 3, 4]),
     new Student(16, 'Debra	Guerrero', [2, 4]),
+    new Student(17, 'Cody Ostler', []),
+    new Student(18, 'Connor *DERPY MONGO SCRUB*', []),
   ];
 
   constructor() { }
@@ -53,5 +55,20 @@ export class StudentService {
     })).toArray();
   }
 
+  public getRandomStudents(): Observable<Array<Student>> {
+    const shuffledArray = shuffleArray(this.students);
+    return Observable.of([shuffledArray[0], shuffledArray[1], shuffledArray[2]]);
+  }
 
+
+}
+
+function shuffleArray(array: Array<any>) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+  return array;
 }

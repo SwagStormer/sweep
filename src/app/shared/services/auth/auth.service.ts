@@ -18,6 +18,11 @@ export class AuthService {
     this.cookie.put('username', username);
   }
 
+  public logout() {
+    this.user.name = '';
+    this.cookie.put('username', undefined);
+  }
+
   public getUsername(): string {
     return this.user.name;
   }
@@ -28,7 +33,7 @@ export class AuthService {
 export class CanActivateViaAuthGuard implements CanActivate {
   constructor(private cookie: CookieService, private router: Router) {}
   public canActivate() {
-    const worthy = this.cookie.get('username') !== '';
+    const worthy = this.cookie.get('username') !== undefined;
     if (!worthy) {
       this.router.navigate(['/login']);
     }

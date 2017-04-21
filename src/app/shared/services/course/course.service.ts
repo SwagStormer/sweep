@@ -7,7 +7,6 @@ export class Course {
     public name: string,
     public period: number,
     public code: number,
-    public numberOfStudents: number,
   ) {}
 }
 
@@ -15,12 +14,12 @@ export class Course {
 export class CourseService {
 
   private courses: Array<Course> = [
-    new Course(1, 'English 1010', 1, 23, 24),
-    new Course(2, 'Spanish', 2, 24, 15),
-    new Course(3, 'Jazz Band', 3, 25, 15),
-    new Course(4, 'Engineering', 4, 26, 15),
-    new Course(5, 'Chemistry', 4, 26, 15),
-    new Course(6, 'Computer Programming 2', 4, 26, 15),
+    new Course(1, 'English 1010', 1, 23),
+    new Course(2, 'Spanish', 2, 24),
+    new Course(3, 'Jazz Band', 3, 25),
+    new Course(4, 'Engineering', 4, 26),
+    new Course(5, 'Chemistry', 4, 26),
+    new Course(6, 'Computer Programming 2', 4, 26),
 
   ];
 

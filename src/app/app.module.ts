@@ -17,6 +17,7 @@ import {CanActivateViaAuthGuard} from './shared/services/auth/auth.service';
 import { AssignmentsComponent } from './home/routes/assignments/assignments.component';
 import { GradeComponent } from './home/routes/grade/grade.component';
 import { AssignmentComponent } from './home/routes/assignment/assignment.component';
+import { StudentComponent } from './home/routes/student/student.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { AssignmentComponent } from './home/routes/assignment/assignment.compone
     AssignmentsComponent,
     GradeComponent,
     AssignmentComponent,
+    StudentComponent,
   ],
   imports: [
     BrowserModule,

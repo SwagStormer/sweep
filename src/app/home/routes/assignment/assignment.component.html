@@ -1,1 +1,32 @@
-asdfas
+<div class="container" *ngIf="assignment">
+  <div class="container__header">{{assignment.name}}</div>
+  <md-tab-group>
+    <md-tab label="Description"></md-tab>
+    <md-tab label="Ungraded Submissions">
+      <div class="submissions-container">
+        <div class="submissions-container__header">
+          <md-icon>search</md-icon>
+          <md-input-container>
+            <input mdInput placeholder="Search" [(ngModel)]="searchText" (ngModelChange)="search($event)">
+          </md-input-container>
+        </div>
+        <table>
+          <tr class="assignment" *ngFor="let assignment of assignments" (click)="navigateToDetail(assignment.id)">
+            <td>{{(assignmentService.getAssignment(assignment.assignment) | async)?.dueBy | date}}</td>
+            <td>
+              {{(assignmentSubmissionService.getSubmissionCourse(assignment.id) | async)?.name}}: {{(assignmentService.getAssignment(assignment.assignment) | async)?.name}}
+            </td>
+            <td>{{(studentService.getStudent(assignment.student) | async)?.name}}</td>
+
+            <td>
+              <button md-button>
+                {{assignment.score}}/{{(assignmentService.getAssignment(assignment.assignment) | async)?.outOf}}
+              </button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </md-tab>
+    <md-tab label="Graded Submissions"></md-tab>
+  </md-tab-group>
+</div>

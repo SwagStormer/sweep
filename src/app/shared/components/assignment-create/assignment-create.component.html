@@ -1,0 +1,32 @@
+<div class="container">
+
+  <h2>Create Assignment</h2>
+
+  <md-input-container>
+    <input mdInput placeholder="Assignment Name" type="text" [(ngModel)]="assignment.name">
+  </md-input-container>
+
+  <md-select placeholder="Course" [(ngModel)]="assignment.course">
+    <md-option *ngFor="let course of courses" [value]="course.id">{{course.name}}</md-option>
+  </md-select>
+
+  <md-input-container>
+    <input mdInput placeholder="Assignment Out Of" type="number" [(ngModel)]="assignment.outOf">
+  </md-input-container>
+
+  <md-input-container>
+    <textarea mdInput placeholder="Assignment Instructions" rows="4" [(ngModel)]="assignment.instructions"></textarea>
+  </md-input-container>
+
+  <md-input-container>
+    <input type="date" mdInput [(ngModel)]="assignment.dueBy">
+  </md-input-container>
+
+  <button
+    class="submit"
+    md-raised-button
+    color="accent"
+    [disabled]="!valid()"
+    (click)="submit()">Create Assignment</button>
+
+</div>

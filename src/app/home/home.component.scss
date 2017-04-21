@@ -1,12 +1,46 @@
-.container {
-  width: 100vw;
-  height: 100vh;
+.fab-menu {
+  //display: flex;
+  //flex-direction: row;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 32px;
+  z-index: 4;
+
+  &__options {
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+  }
+
+  &__item {
+    margin-bottom: 16px;
+  }
+
+}
+
+
+.overlay {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  border-radius: 100% 0 0 0;
+  background: rgba(0, 0, 0, .4);
+  width: 200vw;
+  height: 200vh;
+  z-index: 3;
 }
 
 .toolbar {
+  position: fixed;
+  z-index: 2;
 
   &__icon {
     margin-right: 16px;
+  }
+
+  &__fill {
+    flex: 1 1 auto;
   }
 
 }

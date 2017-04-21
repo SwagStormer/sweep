@@ -18,6 +18,8 @@ import {AssignmentService} from './services/assignment/assignment.service';
 import { StudentsCourseComponent } from './components/students-course/students-course.component';
 import { AssignmentCourseComponent } from './components/assignment-course/assignment-course.component';
 import { AssignmentSubmissionsCourseComponent } from './components/assignment-submissions-course/assignment-submissions-course.component';
+import { CoursesStudentComponent } from './components/courses-student/courses-student.component';
+import { AssignmentCreateComponent } from './components/assignment-create/assignment-create.component';
 
 @NgModule({
   imports: [
@@ -25,7 +27,16 @@ import { AssignmentSubmissionsCourseComponent } from './components/assignment-su
     FormsModule,
     MaterialModule
   ],
-  declarations: [CoursesComponent, AssignmentsComponent, StudentsComponent, AssignmentSubmissionsComponent, StudentsCourseComponent, AssignmentCourseComponent, AssignmentSubmissionsCourseComponent],
+  declarations: [
+    CoursesComponent,
+    AssignmentsComponent,
+    StudentsComponent,
+    AssignmentSubmissionsComponent,
+    StudentsCourseComponent,
+    AssignmentCourseComponent,
+    AssignmentSubmissionsCourseComponent,
+    CoursesStudentComponent,
+    AssignmentCreateComponent],
   exports: [
     CoursesComponent,
     AssignmentsComponent,
@@ -35,6 +46,9 @@ import { AssignmentSubmissionsCourseComponent } from './components/assignment-su
     AssignmentCourseComponent,
     AssignmentSubmissionsCourseComponent
 
+  ],
+  entryComponents: [
+    AssignmentCreateComponent
   ],
   providers: [
     AuthService,

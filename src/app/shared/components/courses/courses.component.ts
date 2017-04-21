@@ -2,11 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { CourseService, Course } from '../../services/course/course.service';
 import {AssignmentSubmissionService} from '../../services/assignment/assignment-submission.service';
 import {Router} from '@angular/router';
+import { collapse } from '../../../animations/collapse';
+import { StudentService } from '../../services/student/student.service';
 
 @Component({
   selector: 'app-courses',
   templateUrl: './courses.component.html',
-  styleUrls: ['./courses.component.scss']
+  styleUrls: ['./courses.component.scss'],
+  animations: [
+    collapse
+  ]
 })
 export class CoursesComponent implements OnInit {
 
@@ -15,6 +20,7 @@ export class CoursesComponent implements OnInit {
 
   constructor(private courseService: CourseService,
               public assignmentSubmissionService: AssignmentSubmissionService,
+              public studentService: StudentService,
               private router: Router) { }
 
   ngOnInit() {
