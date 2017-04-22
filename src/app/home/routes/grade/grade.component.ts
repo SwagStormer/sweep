@@ -56,8 +56,7 @@ export class GradeComponent implements OnInit {
   }
 
   hasNext(): boolean {
-
-    return false;
+    return this.submissions.length > 0;
   }
 
   navigateBack() {
@@ -65,6 +64,12 @@ export class GradeComponent implements OnInit {
   }
 
   submit() {
-    this.navigateBack();
+    if this.hasNext(){
+      this.currentAssignment = submissions[0];
+    }
+    else{
+      this.navigateBack();
+    }
+
   }
 }
