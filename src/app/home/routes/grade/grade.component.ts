@@ -1,6 +1,12 @@
 
 import { Component, OnInit } from '@angular/core';
 import {Location} from '@angular/common';
+import {
+  AssignmentSubmisionService,
+  IAssignmentSubmission
+} from '../../../shared/models/assignment-submission-service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { IAssignment } from '../../../shared/models/assignment-service';
 
 @Component({
   selector: 'app-grade',
@@ -9,11 +15,56 @@ import {Location} from '@angular/common';
 })
 export class GradeComponent implements OnInit {
 
-  constructor(private location: Location) { }
+  private currentAssignment: IAssignmentSubmission;
+  private submissions: IAssignmentSubmission[];
+
+  constructor(
+    private location: Location,
+    private assignmentSubmissionService: AssignmentSubmisionService,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      if (params['assignment']) {
+        this.assignmentSubmissionService.read(+params['assignment']).subscribe(submission => {
+          if (!submission) {
+            this.navigateBack();
+          }
+          this.currentAssignment = submission;
+        });
+      } else if (params['course']) {
+        this.assignmentSubmissionService.readList({course: +params['course']}).subscribe(submissions => {
+          if (submissions.length === 0) {
+            this.navigateBack();
+          }
+          this.currentAssignment = submissions[0];
+          submissions.splice(0, 1);
+          this.submissions = submissions;
+        });
+      } else if (params['student']) {
+        this.assignmentSubmissionService.readList({student: +params['student']}).subscribe(submissions => {
+          if (submissions.length === 0) {
+            this.navigateBack();
+          }
+          this.currentAssignment = submissions[0];
+          submissions.splice(0, 1);
+          this.submissions = submissions;
+        });
+      }
+    });
   }
-  submit(){
+
+  hasNext(): boolean {
+
+    return false;
+  }
+
+  navigateBack() {
     this.location.back();
+  }
+
+  submit() {
+    this.navigateBack();
   }
 }
