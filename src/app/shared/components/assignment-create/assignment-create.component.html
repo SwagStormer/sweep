@@ -6,7 +6,7 @@
     <input mdInput placeholder="Assignment Name" type="text" [(ngModel)]="assignment.name">
   </md-input-container>
 
-  <md-select placeholder="Course" [(ngModel)]="assignment.course">
+  <md-select placeholder="Course" [(ngModel)]="assignment.course" [disabled]="locked">
     <md-option *ngFor="let course of courses" [value]="course.id">{{course.name}}</md-option>
   </md-select>
 
@@ -19,7 +19,7 @@
   </md-input-container>
 
   <md-input-container>
-    <input mdInput [(ngModel)]="assignment.due_by">
+    <input mdInput type="date" [(ngModel)]="assignment.due_by">
   </md-input-container>
 
   <button

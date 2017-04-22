@@ -17,6 +17,8 @@ export class GradeComponent implements OnInit {
   private currentAssignment: IAssignmentSubmission;
   private submissions: IAssignmentSubmission[];
 
+  private initialLength: number;
+
   constructor(private location: Location,
               private assignmentSubmissionService: AssignmentSubmisionService,
               private route: ActivatedRoute) {
@@ -36,6 +38,7 @@ export class GradeComponent implements OnInit {
           if (submissions.length === 0) {
             this.navigateBack();
           }
+          this.initialLength = submissions.length;
           this.currentAssignment = submissions[0];
           submissions.splice(0, 1);
           this.submissions = submissions;
@@ -45,6 +48,7 @@ export class GradeComponent implements OnInit {
           if (submissions.length === 0) {
             this.navigateBack();
           }
+          this.initialLength = submissions.length;
           this.currentAssignment = submissions[0];
           submissions.splice(0, 1);
           this.submissions = submissions;
@@ -54,7 +58,7 @@ export class GradeComponent implements OnInit {
   }
 
   hasNext(): boolean {
-    return this.submissions.length > 0;
+    return this.submissions && this.submissions.length > 0;
   }
 
   navigateBack() {
@@ -63,8 +67,9 @@ export class GradeComponent implements OnInit {
 
   submit() {
     this.currentAssignment.graded = true;
-    this.assignmentSubmissionService.update(this.currentAssignment.id, this.currentAssignment).subscribe(x => {
+    this.assignmentSubmissionService.update(this.currentAssignment.id, this.currentAssignment, false).subscribe(x => {
     });
+    console.log(this.hasNext());
     if (this.hasNext()) {
       this.currentAssignment = this.submissions[0];
       this.submissions.splice(0, 1);
@@ -74,6 +79,6 @@ export class GradeComponent implements OnInit {
   }
 
   getValue() {
-
+    return (this.initialLength - this.submissions.length) / this.initialLength * 100;
   }
 }

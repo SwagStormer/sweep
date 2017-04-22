@@ -7,7 +7,7 @@
     <div class="submission__body">{{currentAssignment.body}}/div>
       <md-input-container class="submission__score" floatPlaceholder="never">
         <span mdPrefix>Score:</span>
-        <input mdInput placeholder="0" [(ngModel)]="currentAssignment.score">
+        <input mdInput placeholder="0" [(ngModel)]="currentAssignment.grade">
         <span mdSuffix>/100</span>
       </md-input-container>
       <md-input-container class="submission__comments">
@@ -34,7 +34,6 @@
     class="example-margin"
     color="warn"
     model="determinate"
-    [value]="getValue()"
-    [bufferValue]="bufferValue">
+    [value]="getValue()">
   </md-progress-bar>
 </section>

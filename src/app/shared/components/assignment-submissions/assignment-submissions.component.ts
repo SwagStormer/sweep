@@ -12,6 +12,8 @@ import { CourseService } from '../../models/course-service';
 export class AssignmentSubmissionsComponent implements OnInit {
   private _filters: any;
   private _synopsis = false;
+  private lastSearched: number;
+  private searchText = '';
   @Input() set synopsis(value: boolean) {
     this._synopsis = value;
   }
@@ -50,5 +52,22 @@ export class AssignmentSubmissionsComponent implements OnInit {
   filterSubmissions() {
     this.assignmentSubmissions = this.assignmentSubmissions.slice(0, 3);
   }
+
+
+  public search(event) {
+    const d = new Date();
+    this.lastSearched = d.getMilliseconds();
+    this.checkDebounce(this.lastSearched);
+  }
+
+  private checkDebounce(time: any) {
+    setTimeout(() => {
+      if (time === this.lastSearched) {
+        this.filters = Object.assign(this._filters, {'search': this.searchText});
+      }
+    }, 350);
+  }
+
+
 }
 

@@ -5,7 +5,7 @@
       <app-students-table [filters]="{course: course.id}"></app-students-table>
     </md-tab>
     <md-tab label="Ungraded Submissions">
-      <app-assignment-submissions [filters]="{course: course.id}"></app-assignment-submissions>
+      <app-assignment-submissions [filters]="{course: course.id, graded: false}"></app-assignment-submissions>
     </md-tab>
     <md-tab label="Assignments">
       <app-assignments-table [filters]="{course: course.id}" [inDetail]="true"></app-assignments-table>

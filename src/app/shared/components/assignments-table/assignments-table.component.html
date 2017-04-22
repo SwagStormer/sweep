@@ -21,7 +21,7 @@
   <!--</table>-->
 <!--</div>-->
 
-
+<button md-raised-button *ngIf="inDetail" color="accent" class="create-button" (click)="openDialog()">CREATE ASSIGNMENT</button>
 <div class="header">Assigned assignments</div>
 
 <div class="container">
@@ -35,7 +35,7 @@
     <tr class="assignment" *ngFor="let assignment of assignments" (click)="navigateToGrades(assignment.id)">
       <td>
         <div class="assignment__name">
-          <div class="assignment__name__course" *ngIf = !inDetail>{{assignment.course.name}} </div>
+          <div class="assignment__name__course" *ngIf = !inDetail>{{assignment.course.name}}:  </div>
           {{assignment.name}}
         </div>
       </td>
