@@ -3,6 +3,7 @@ import { MdDialogRef } from '@angular/material';
 import {AssignmentSubmisionService} from "../../models/assignment-submission-service";
 import {CourseService, ICourse} from "../../models/course-service";
 import {AssignmentService, IAssignment} from "../../models/assignment-service";
+import { DateFormatter } from '@angular/common/src/pipes/intl';
 
 
 
@@ -21,7 +22,7 @@ export class AssignmentCreateComponent implements OnInit {
     description: '',
     out_of: 100,
     course: -1,
-    due_by: ''
+    due_by: '2017/2/4'
   };
 
 
@@ -39,6 +40,7 @@ export class AssignmentCreateComponent implements OnInit {
   }
 
   valid(): boolean {
+
     let valid =  this.assignment.name !== '' &&
       this.assignment.description !== '' &&
       this.assignment.due_by !== '' &&
@@ -49,7 +51,9 @@ export class AssignmentCreateComponent implements OnInit {
 
 
   submit() {
-    console.log(this.assignment.course)
+    console.log(this.assignment.course);
+    const temp = this.assignment.due_by.split('/').join('-');
+    this.assignment.due_by = temp;
     this.assignmentService.create(this.assignment).subscribe(assignment => {
       this.dialog.close();
     });
