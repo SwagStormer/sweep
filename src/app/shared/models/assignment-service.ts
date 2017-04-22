@@ -1,8 +1,8 @@
 import {Store} from "../TSData/store";
 import {Record} from "../TSData/record";
 export interface IAssignment {
-  description: string;
   name: string;
+  description: string;
   out_of: number;
   course: number;
 }

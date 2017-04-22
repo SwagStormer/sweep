@@ -1,7 +1,8 @@
 import {Store} from "../TSData/store";
 import {Record} from "../TSData/record";
 export interface ITeacher {
-  name: string;
+  user: any;
+  courses: any[];
 }
 
 export class TeacherService extends Store<ITeacher>{

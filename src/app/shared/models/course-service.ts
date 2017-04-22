@@ -2,6 +2,8 @@ import {Store} from "../TSData/store";
 import {Record} from "../TSData/record";
 export interface IHour {
   name: string;
+  teachers: any[];
+  students: any[];
 }
 
 export class HourService extends Store<IHour>{
