@@ -9,6 +9,7 @@ import { spin } from '../animations/spin';
 import { expand } from '../animations/expand';
 import { MdDialog } from '@angular/material';
 import { AssignmentCreateComponent } from '../shared/components/assignment-create/assignment-create.component';
+import { AuthService } from '../shared/TSData/auth.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -24,12 +25,14 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private dialog: MdDialog
+    private dialog: MdDialog,
+    private auth: AuthService
   ) {}
 
   ngOnInit() {}
 
   logout() {
+    this.auth.logout();
     this.router.navigate(['login']);
   }
 

@@ -9,15 +9,15 @@
     </md-input-container>
   </div>
   <table>
-    <tr class="assignment" *ngFor="let assignment of assignmentSubmissions" (click)="navigateToAssignment(1)">
-      <div class="assignment__name" *ngIf = !inDetail>
-        <div class="assignment__name__course">English: </div>
-        Essay
+    <tr class="assignment" *ngFor="let assignment of assignmentSubmissions" (click)="navigateToAssignment(assignment.id)">
+      <div class="assignment__name">
+        <div class="assignment__name__course" *ngIf = !inDetail>{{assignment.assignment.course.name}}: </div>
+        {{assignment.assignment.name}}
       </div>
 
       <td>
         <button md-button>
-          100/100
+          {{assignment.grade}} / {{assignment.assignment.out_of}}
         </button>
       </td>
     </tr>

@@ -1,16 +1,19 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import { AssignmentSubmisionService } from '../../models/assignment-submission-service';
+import { AssignmentService } from '../../models/assignment-service';
+import { StudentService } from '../../models/student-service';
+import { CourseService } from '../../models/course-service';
 @Component({
   selector: 'app-assignment-submissions',
   templateUrl: './assignment-submissions.component.html',
-  styleUrls: ['./assignment-submissions.component.scss']
+  styleUrls: ['./assignment-submissions.component.scss'],
 })
 export class AssignmentSubmissionsComponent implements OnInit {
   private _filters: any;
   private _synopsis = false;
   @Input() set synopsis(value: boolean) {
     this._synopsis = value;
-    this.filterSubmissions();
   }
   @Input() set filters(value: any) {
     this._filters = value;
@@ -18,15 +21,24 @@ export class AssignmentSubmissionsComponent implements OnInit {
   };
 
   assignmentSubmissions = [];
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private assignmentSubmissionService: AssignmentSubmisionService,
+    public assignmentService: AssignmentService,
+    public studentService: StudentService) { }
 
   ngOnInit() {
   }
   getAssignmentSubmissions() {
-    this.assignmentSubmissions = Array(10);
+    this.assignmentSubmissionService.readList(this._filters).subscribe(assignments => {
+      this.assignmentSubmissions = assignments;
+      if (this._synopsis) {
+        this.filterSubmissions();
+      }
+    });
   }
   navigateToAssignment(id: number) {
-    this.router.navigate(['assignment', id]);
+    this.router.navigate(['grade'], {queryParams: {assignment: id}});
 
   }
 
@@ -36,7 +48,7 @@ export class AssignmentSubmissionsComponent implements OnInit {
 
 
   filterSubmissions() {
-    this.assignmentSubmissions = [this.assignmentSubmissions[0], this.assignmentSubmissions[1], this.assignmentSubmissions[2]];
+    this.assignmentSubmissions = this.assignmentSubmissions.slice(0, 3);
   }
 }
 

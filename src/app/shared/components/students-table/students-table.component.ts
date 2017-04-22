@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import { StudentService } from '../../models/student-service';
 
 @Component({
   selector: 'app-students-table',
@@ -14,16 +15,18 @@ export class StudentsTableComponent implements OnInit {
     this.getStudents();
   };
   students = [];
-  constructor(private router: Router) { }
+  constructor(private router: Router, private studentService: StudentService) { }
 
   ngOnInit() {
   }
   getStudents() {
-    this.students = Array(10);
+    this.studentService.readList(this._filters).subscribe(students => {
+      this.students = students;
+    });
   }
   navigateToSubmission(id: number, event: any) {
     event.stopPropagation();
-    this.router.navigate(['grade'], {queryParams: {course: id}});
+    this.router.navigate(['grade'], {queryParams: {student: id}});
 
   }
 }

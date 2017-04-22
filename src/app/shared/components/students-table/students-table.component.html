@@ -8,10 +8,10 @@
   </div>
   <div class="students">
     <md-card *ngFor="let student of students">
-      <md-card-title>Ryan Berger</md-card-title>
+      <md-card-title>{{student.user.first_name}} {{student.user.last_name}}</md-card-title>
       <md-card-subtitle>asdfasdf</md-card-subtitle>
       <md-card-actions>
-        <button md-button color="accent" (click)="navigateToSubmission(1, $event)">Grade Assignments</button>
+        <button md-button color="accent" (click)="navigateToSubmission(student.id, $event)">Grade Assignments</button>
       </md-card-actions>
     </md-card>
   </div>

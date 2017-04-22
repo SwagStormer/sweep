@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-// import { AuthService} from '../shared/services/auth/auth.service';
+import { AuthService } from '../shared/TSData/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -20,14 +20,19 @@ export class LoginComponent implements OnInit {
     username: '',
     password: '',
     passwordConfirm: '',
-    code: '',
+    email: '',
+    first_name: '',
+    last_name: ''
   };
 
 
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private auth: AuthService) { }
 
   ngOnInit() {
+    if (this.auth.isLoggedIn()) {
+      this.router.navigate([''])
+    }
   }
 
 
@@ -36,12 +41,9 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    // if (this.user.username === '') {
-    //   this.auth.login(this.signUpUser.username);
-    // } else {
-    //   this.auth.login(this.user.username);
-    // }
-    this.router.navigate(['']);
+    this.auth.login(this.user.username, this.user.password).subscribe(user => {
+      this.router.navigate(['']);
+    });
   }
 
   loginValid() {
@@ -52,8 +54,10 @@ export class LoginComponent implements OnInit {
     return this.signUpUser.username !== '' &&
       this.signUpUser.password !== '' &&
       this.signUpUser.passwordConfirm !== '' &&
-      this.signUpUser.code !== '' &&
-      this.signUpUser.password === this.signUpUser.passwordConfirm;
+      this.signUpUser.email !== '' &&
+      this.signUpUser.password === this.signUpUser.passwordConfirm &&
+      this.signUpUser.first_name !== '' &&
+      this.signUpUser.last_name !== '';
   }
 
 }

@@ -32,11 +32,11 @@
     </md-input-container>
   </div>
   <table>
-    <tr class="assignment" *ngFor="let assignment of assignments" (click)="navigateToGrades(1)">
+    <tr class="assignment" *ngFor="let assignment of assignments" (click)="navigateToGrades(assignment.id)">
       <td>
         <div class="assignment__name" *ngIf = !inDetail>
-          <div class="assignment__name__course">English: </div>
-          Essay
+          <div class="assignment__name__course">{{assignment.course.name}} </div>
+          {{assignment.name}}
         </div>
       </td>
       <td>12/2</td>

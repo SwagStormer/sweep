@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import { CourseService } from '../../models/course-service';
 
 @Component({
   selector: 'app-courses-table',
@@ -13,14 +14,15 @@ export class CoursesTableComponent implements OnInit {
     this.getCourses();
   };
   courses = [];
-  constructor(private router: Router) {
-
+  constructor(private router: Router, private courseService: CourseService) {
   }
 
   ngOnInit() {
   }
   getCourses() {
-    this.courses = Array(10);
+    this.courseService.readList(this._filters).subscribe(courses => {
+      this.courses = courses;
+    });
   }
   navigateToDetail(id: number) {
     this.router.navigate(['course', id]);

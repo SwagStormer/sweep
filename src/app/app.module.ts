@@ -21,6 +21,14 @@ import { StudentsTableComponent } from './shared/components/students-table/stude
 import {StudentsComponent} from './home/routes/students/students.component';
 import { AssignmentsTableComponent } from './shared/components/assignments-table/assignments-table.component';
 import { AssignmentCreateComponent } from './shared/components/assignment-create/assignment-create.component';
+import { AuthService } from './shared/TSData/auth.service';
+import { TSDataModule } from './shared/TSData/tsdata.module';
+import { CourseService } from './shared/models/course-service';
+import { AssignmentService } from './shared/models/assignment-service';
+import { AssignmentSubmisionService } from './shared/models/assignment-submission-service';
+import { PeriodService } from './shared/models/period-service';
+import { StudentService } from './shared/models/student-service';
+import { TeacherService } from './shared/models/teacher-service';
 
 @NgModule({
   declarations: [
@@ -48,10 +56,18 @@ import { AssignmentCreateComponent } from './shared/components/assignment-create
     FormsModule,
     HttpModule,
     MaterialModule,
+    TSDataModule,
     ChartsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    CourseService,
+    AssignmentService,
+    AssignmentSubmisionService,
+    PeriodService,
+    StudentService,
+    TeacherService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

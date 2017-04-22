@@ -1,8 +1,8 @@
 <div class="header">Your Courses</div>
 <div class="container">
-  <md-card *ngFor="let course of courses" (click)="navigateToDetail(1)">
-    <md-card-title>English</md-card-title>
-    <md-card-subtitle>asdfasdf</md-card-subtitle>
+  <md-card *ngFor="let course of courses" (click)="navigateToDetail(course.id)">
+    <md-card-title>{{course.name}}</md-card-title>
+    <md-card-subtitle>{{course.students.length}} Students</md-card-subtitle>
     <md-card-actions>
       <button md-button color="accent" (click)="speedGrade(1, $event)">Speed Grade</button>
     </md-card-actions>

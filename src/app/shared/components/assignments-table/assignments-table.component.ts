@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import { AssignmentService } from '../../models/assignment-service';
 @Component({
   selector: 'app-assignments-table',
   templateUrl: './assignments-table.component.html',
@@ -13,15 +14,17 @@ export class AssignmentsTableComponent implements OnInit {
   };
   @Input() inDetail: boolean = false;
   assignments = [];
-  constructor(private router: Router) { }
+  constructor(private router: Router, private assignmentService: AssignmentService) { }
 
   ngOnInit() {
   }
   navigateToGrades(id: number) {
-    this.router.navigate(['grade'], {queryParams: {course: id}});
+    this.router.navigate(['assignment', id]);
 
   }
   getAssignments() {
-    this.assignments = Array(10);
+    this.assignmentService.readList(this._filters).subscribe(assignments => {
+      this.assignments = assignments;
+    });
   }
 }

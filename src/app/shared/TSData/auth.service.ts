@@ -51,7 +51,7 @@ export class AuthService {
   public signUp(user: any): Observable<any> {
     return this.http.post(`${this.apiConfig.baseUrl}/contributors`, user).flatMap(user => {
       return this.login(user.username, user.password);
-    })
+    });
   }
 
   public getUser(): Observable<Object> {

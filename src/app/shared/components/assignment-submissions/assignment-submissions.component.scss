@@ -18,6 +18,19 @@
   }
 }
 
+.assignment {
+
+  &__name {
+    display: flex;
+    align-self: center;
+    padding: 24px;
+
+    &__course {
+      margin-right: 4px;
+    }
+  }
+}
+
 .header {
   margin: 32px;
   font-size: 24px;
