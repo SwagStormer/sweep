@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-assignments-table',
   templateUrl: './assignments-table.component.html',
@@ -13,9 +13,13 @@ export class AssignmentsTableComponent implements OnInit {
   };
   @Input() inDetail: boolean = false;
   assignments = [];
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+  navigateToGrades(id: number) {
+    this.router.navigate(['grade'], {queryParams: {course: id}});
+
   }
   getAssignments() {
     this.assignments = Array(10);

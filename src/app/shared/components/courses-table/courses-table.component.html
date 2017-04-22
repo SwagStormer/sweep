@@ -1,10 +1,10 @@
 <div class="header">Your Courses</div>
 <div class="container">
-  <md-card *ngFor="let course of courses">
+  <md-card *ngFor="let course of courses" (click)="navigateToDetail(1)">
     <md-card-title>English</md-card-title>
     <md-card-subtitle>asdfasdf</md-card-subtitle>
     <md-card-actions>
-      <button md-button color="accent" (click)="speedGrade(course.id, $event)">Speed Grade</button>
+      <button md-button color="accent" (click)="speedGrade(1, $event)">Speed Grade</button>
     </md-card-actions>
   </md-card>
 </div>

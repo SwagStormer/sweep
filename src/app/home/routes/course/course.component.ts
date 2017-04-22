@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-course',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./course.component.scss']
 })
 export class CourseComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
+  constructor(public route: ActivatedRoute) {
   }
 
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      const param = +params['id'];
+    });
+
+
+  }
 }

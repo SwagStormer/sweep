@@ -15,11 +15,11 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: DashboardComponent },
-      { path: 'course', component: CourseComponent },
+      { path: 'course/:id', component: CourseComponent },
       { path: 'grade', component: GradeComponent },
       { path: 'my-students', component: StudentsComponent },
       { path: 'assignments', component: AssignmentsComponent },
-      { path: 'assignment', component: AssignmentComponent }
+      { path: 'assignment/:id', component: AssignmentComponent }
     ]
   }
 ];

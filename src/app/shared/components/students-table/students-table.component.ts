@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-students-table',
@@ -13,11 +14,16 @@ export class StudentsTableComponent implements OnInit {
     this.getStudents();
   };
   students = [];
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
   getStudents() {
     this.students = Array(10);
+  }
+  navigateToSubmission(id: number, event: any) {
+    event.stopPropagation();
+    this.router.navigate(['grade'], {queryParams: {course: id}});
+
   }
 }

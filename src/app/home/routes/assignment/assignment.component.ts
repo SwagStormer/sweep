@@ -11,5 +11,5 @@ export class AssignmentComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  public navigateToDetail() {}
 }

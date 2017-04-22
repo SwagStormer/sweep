@@ -1,12 +1,38 @@
+<!--<div class="header" >Assignments</div>-->
+<!--<div class="container">-->
+  <!--<div class="header">-->
+    <!--<md-icon>search</md-icon>-->
+    <!--<md-input-container>-->
+      <!--&lt;!&ndash;<input mdInput placeholder="Search">&ndash;&gt;-->
+      <!--<input mdInput placeholder="Search" [(ngModel)]="searchText" (ngModelChange)="search($event)">-->
+    <!--</md-input-container>-->
+  <!--</div>-->
+  <!--<table>-->
+    <!--<tr class="assignment" *ngFor="let assignment of assignments">-->
+      <!--<td>-->
+        <!--<div class="assignment__name" *ngIf = !inDetail>-->
+          <!--<div class="assignment__name__course">English: </div>-->
+          <!--Essay-->
+        <!--</div>-->
+      <!--</td>-->
+      <!--<td>12/2</td>-->
+
+    <!--</tr>-->
+  <!--</table>-->
+<!--</div>-->
+
+
+<div class="header">Assigned assignments</div>
+
 <div class="container">
-  <div class="header">
+  <div class="container__header" *ngIf="!_synopsis">
     <md-icon>search</md-icon>
     <md-input-container>
-      <input mdInput placeholder="Search">
+      <input mdInput placeholder="Search" [(ngModel)]="searchText" (ngModelChange)="search($event)">
     </md-input-container>
   </div>
   <table>
-    <tr class="assignment" *ngFor="let assignment of assignments">
+    <tr class="assignment" *ngFor="let assignment of assignments" (click)="navigateToGrades(1)">
       <td>
         <div class="assignment__name" *ngIf = !inDetail>
           <div class="assignment__name__course">English: </div>
@@ -14,9 +40,12 @@
         </div>
       </td>
       <td>12/2</td>
-
     </tr>
   </table>
+  <button
+    *ngIf="_synopsis"
+    md-raised-button
+    (click)="navigate()"
+    class="more-button"
+    color="accent">MORE</button>
 </div>
-
-

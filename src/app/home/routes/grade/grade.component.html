@@ -1,3 +1,27 @@
-<p>
-  grade works!
-</p>
+<div class="container" >
+  <div class="container__header">
+    English - Argument Essay : Ryan Berger
+  </div>
+  <div class="submission">
+    <div class="submission__body-header">Submission Body:</div>
+    <div class="submission__body">"ad lorem ipsum"</div>
+    <md-input-container class="submission__score" floatPlaceholder="never">
+      <span mdPrefix>Score:</span>
+      <input mdInput placeholder="0">
+      <span mdSuffix>/100</span>
+    </md-input-container>
+    <md-input-container class="submission__comments" >
+      <textarea mdInput placeholder="Submission Comments" rows="8" ></textarea>
+    </md-input-container>
+    <button
+      *ngIf="true"
+      md-raised-button color="accent"
+      (click)="submit()"
+      class="submission__grade">Grade</button>
+    <button
+      *ngIf="false"
+      md-raised-button color="accent"
+      (click)="submit()"
+      class="submission__grade">Save</button>
+  </div>
+</div>

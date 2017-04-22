@@ -1,3 +1,17 @@
-<p>
-  course works!
-</p>
+<div class="container">
+  <div class="container__header">{{"English"}}</div>
+  <md-tab-group>
+    <md-tab label="Students">
+      <app-students-table [filters]="{}"></app-students-table>
+    </md-tab>
+    <md-tab label="Ungraded Submissions">
+      <app-assignment-submissions [filters]="{}"></app-assignment-submissions>
+    </md-tab>
+    <md-tab label="Assignments">
+      <app-assignments-table [filters]="{}"></app-assignments-table>
+    </md-tab>
+    <md-tab label="Graded Submissions">
+      <app-assignment-submissions [filters]="{graded:true}"></app-assignment-submissions>
+    </md-tab>
+  </md-tab-group>
+</div>
