@@ -3,23 +3,23 @@
   <h2>Create Assignment</h2>
 
   <md-input-container>
-    <input mdInput placeholder="Assignment Name" type="text" >
+    <input mdInput placeholder="Assignment Name" type="text" [(ngModel)]="assignment.name">
   </md-input-container>
 
-  <md-select placeholder="Course" >
-    <md-option  >English</md-option>
+  <md-select placeholder="Course" [(ngModel)]="assignment.course">
+    <md-option *ngFor="let course of courses" [value]="course.id">{{course.name}}</md-option>
   </md-select>
 
   <md-input-container>
-    <input mdInput placeholder="Assignment Out Of" type="number">
+    <input mdInput placeholder="Assignment Out Of" type="number" [(ngModel)]="assignment.out_of">
   </md-input-container>
 
   <md-input-container>
-    <textarea mdInput placeholder="Assignment Instructions" rows="4" ></textarea>
+    <textarea mdInput placeholder="Assignment Directions" rows="4" [(ngModel)]="assignment.description"></textarea>
   </md-input-container>
 
   <md-input-container>
-    <input type="date" mdInput >
+    <input type="date" mdInput [(ngModel)]="assignment.due_by">
   </md-input-container>
 
   <button

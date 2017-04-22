@@ -3,6 +3,7 @@ import {Record} from "../TSData/record";
 export interface IAssignment {
   name: string;
   description: string;
+  due_by: string;
   out_of: number;
   course: number;
 }
