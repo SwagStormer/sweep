@@ -8,7 +8,7 @@
       <app-assignment-submissions [filters]="{course: course.id}"></app-assignment-submissions>
     </md-tab>
     <md-tab label="Assignments">
-      <app-assignments-table [filters]="{course: course.id}"></app-assignments-table>
+      <app-assignments-table [filters]="{course: course.id}" [inDetail]="true"></app-assignments-table>
     </md-tab>
     <md-tab label="Graded Submissions">
       <app-assignment-submissions [filters]="{course: course.id, graded:true}"></app-assignment-submissions>

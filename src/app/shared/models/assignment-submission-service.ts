@@ -1,6 +1,10 @@
 import {Store} from "../TSData/store";
 import {Record} from "../TSData/record";
 export interface IAssignmentSubmission {
+  id: number;
+  score: number;
+  graded: boolean;
+  comments: string;
   student: number;
   assignment: number;
   submission_type: string;

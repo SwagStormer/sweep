@@ -1,6 +1,5 @@
-
 import { Component, OnInit } from '@angular/core';
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
 import {
   AssignmentSubmisionService,
   IAssignmentSubmission
@@ -18,11 +17,10 @@ export class GradeComponent implements OnInit {
   private currentAssignment: IAssignmentSubmission;
   private submissions: IAssignmentSubmission[];
 
-  constructor(
-    private location: Location,
-    private assignmentSubmissionService: AssignmentSubmisionService,
-    private route: ActivatedRoute
-  ) { }
+  constructor(private location: Location,
+              private assignmentSubmissionService: AssignmentSubmisionService,
+              private route: ActivatedRoute) {
+  }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
@@ -64,12 +62,18 @@ export class GradeComponent implements OnInit {
   }
 
   submit() {
-    if this.hasNext(){
-      this.currentAssignment = submissions[0];
-    }
-    else{
+    this.currentAssignment.graded = true;
+    this.assignmentSubmissionService.update(this.currentAssignment.id, this.currentAssignment).subscribe(x => {
+    });
+    if (this.hasNext()) {
+      this.currentAssignment = this.submissions[0];
+      this.submissions.splice(0, 1);
+    } else {
       this.navigateBack();
     }
+  }
+
+  getValue() {
 
   }
 }

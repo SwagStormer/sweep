@@ -4,7 +4,7 @@
     <md-card-title>{{course.name}}</md-card-title>
     <md-card-subtitle>{{course.students.length}} Students</md-card-subtitle>
     <md-card-actions>
-      <button md-button color="accent" (click)="speedGrade(1, $event)">Speed Grade</button>
+      <button md-button color="accent" (click)="speedGrade(course.id, $event)">Speed Grade</button>
     </md-card-actions>
   </md-card>
 </div>

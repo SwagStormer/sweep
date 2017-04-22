@@ -17,18 +17,19 @@
 
   &__body {
     padding: 24px;
+    display: flex;
+    flex-direction: column;
   }
 
   &__score {
-    max-width: 120px;
     margin: 24px;
     align-self: flex-end;
   }
 
   &__comments {
+    margin: 24px;
     align-self: center;
     width: 512px;
-    margin: 24px;
   }
 
   &__grade {

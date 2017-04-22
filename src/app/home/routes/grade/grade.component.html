@@ -1,27 +1,40 @@
-<div class="container" >
+<div class="container" *ngIf="currentAssignment">
   <div class="container__header">
-    English - Argument Essay : Ryan Berger
+    {{currentAssignment.assignment.course.name}}: {{currentAssignment.assignment.name}}
   </div>
   <div class="submission">
     <div class="submission__body-header">Submission Body:</div>
-    <div class="submission__body">ad lorem ipsum</div>
-    <md-input-container class="submission__score" floatPlaceholder="never">
-      <span mdPrefix>Score:</span>
-      <input mdInput placeholder="0">
-      <span mdSuffix>/100</span>
-    </md-input-container>
-    <md-input-container class="submission__comments" >
-      <textarea mdInput placeholder="Submission Comments" rows="8" ></textarea>
-    </md-input-container>
-    <button
-      *ngIf="true"
-      md-raised-button color="accent"
-      (click)="submit()"
-      class="submission__grade">Grade</button>
-    <button
-      *ngIf="false"
-      md-raised-button color="accent"
-      (click)="submit()"
-      class="submission__grade">Save</button>
+    <div class="submission__body">{{currentAssignment.body}}/div>
+      <md-input-container class="submission__score" floatPlaceholder="never">
+        <span mdPrefix>Score:</span>
+        <input mdInput placeholder="0" [(ngModel)]="currentAssignment.score">
+        <span mdSuffix>/100</span>
+      </md-input-container>
+      <md-input-container class="submission__comments">
+        <textarea mdInput placeholder="Submission Comments" rows="8">{{currentAssignment.comments}}</textarea>
+      </md-input-container>
+      <button
+        *ngIf="!currentAssignment.graded"
+        md-raised-button color="accent"
+        (click)="submit()"
+        class="submission__grade">Grade
+      </button>
+      <button
+        *ngIf="currentAssignment.graded"
+        md-raised-button color="accent"
+        (click)="submit()"
+        class="submission__grade">Save
+      </button>
+    </div>
   </div>
 </div>
+
+<section class="progress" *ngIf="submissions">
+  <md-progress-bar
+    class="example-margin"
+    color="warn"
+    model="determinate"
+    [value]="getValue()"
+    [bufferValue]="bufferValue">
+  </md-progress-bar>
+</section>
