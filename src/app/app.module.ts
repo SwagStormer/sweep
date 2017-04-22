@@ -20,6 +20,7 @@ import { CoursesTableComponent } from './shared/components/courses-table/courses
 import { StudentsTableComponent } from './shared/components/students-table/students-table.component';
 import {StudentsComponent} from './home/routes/students/students.component';
 import { AssignmentsTableComponent } from './shared/components/assignments-table/assignments-table.component';
+import { AssignmentCreateComponent } from './shared/components/assignment-create/assignment-create.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,10 @@ import { AssignmentsTableComponent } from './shared/components/assignments-table
     StudentsTableComponent,
     StudentsComponent,
     AssignmentsTableComponent,
+    AssignmentCreateComponent,
+  ],
+  entryComponents: [
+    AssignmentCreateComponent
   ],
   imports: [
     BrowserModule,

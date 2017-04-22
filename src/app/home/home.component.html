@@ -6,7 +6,29 @@
     <div class="toolbar__fill"></div>
     <a md-button class="logout" (click)="logout()">LOG OUT</a>
   </md-toolbar>
-  <!--<md-toolbar class="fake-toolbar" color="primary">-->
-  <!--</md-toolbar>-->
+  <md-toolbar class="fake-toolbar" color="primary">
+  </md-toolbar>
   <router-outlet></router-outlet>
+  <div class="fab-menu">
+    <div class="fab-menu__options" *ngIf="state.toggled">
+
+      <button md-mini-fab
+              mdTooltip="Add Assignment"
+              mdTooltipPosition="before"
+              class="fab-menu__item"
+              (click)="createAssignment()">
+        <md-icon>assignment</md-icon>
+      </button>
+
+    </div>
+
+    <button md-fab
+            [@spin]="state.state"
+            (click)="state.toggle()"
+            class="fab">
+      <md-icon>add</md-icon>
+    </button>
+
+  </div>
+  <div class="overlay" [@expand]="state.state" *ngIf="state.toggled" (click)="state.toggle()"></div>
 </div>

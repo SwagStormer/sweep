@@ -1,0 +1,32 @@
+<div class="container">
+
+  <h2>Create Assignment</h2>
+
+  <md-input-container>
+    <input mdInput placeholder="Assignment Name" type="text" >
+  </md-input-container>
+
+  <md-select placeholder="Course" >
+    <md-option  >English</md-option>
+  </md-select>
+
+  <md-input-container>
+    <input mdInput placeholder="Assignment Out Of" type="number">
+  </md-input-container>
+
+  <md-input-container>
+    <textarea mdInput placeholder="Assignment Instructions" rows="4" ></textarea>
+  </md-input-container>
+
+  <md-input-container>
+    <input type="date" mdInput >
+  </md-input-container>
+
+  <button
+    class="submit"
+    md-raised-button
+    color="accent"
+    [disabled]="!valid()"
+    (click)="submit()">Create Assignment</button>
+
+</div>
