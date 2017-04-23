@@ -1,0 +1,18 @@
+
+<div class="container">
+  <div class="header">
+    <md-icon>search</md-icon>
+    <md-input-container>
+      <input mdInput placeholder="Search" [(ngModel)]="searchText" (ngModelChange)="search($event)">
+    </md-input-container>
+  </div>
+  <div class="students">
+    <md-card *ngFor="let student of students">
+      <md-card-title>{{student.user.first_name}} {{student.user.last_name}}</md-card-title>
+      <md-card-actions>
+        <button md-button color="accent" (click)="navigateToSubmission(student.id, $event)">Grade Assignments</button>
+      </md-card-actions>
+    </md-card>
+  </div>
+</div>
+

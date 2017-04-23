@@ -1,0 +1,43 @@
+.container {
+  &__header {
+    font-size: 24px;
+    padding: 32px;
+    border-bottom: 1px solid #CCCCCC;
+  }
+}
+
+.submission {
+  display: flex;
+  flex-direction: column;
+
+  &__body-header {
+    padding: 24px;
+    font-size: 20px;
+  }
+
+  &__body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__score {
+    margin: 24px;
+    align-self: flex-end;
+  }
+
+  &__comments {
+    margin: 24px;
+    align-self: center;
+    width: 512px;
+  }
+
+  &__grade {
+    align-self: center;
+    max-width: 128px;
+  }
+}
+
+.progress {
+  margin: 32px 128px;
+}

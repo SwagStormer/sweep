@@ -1,157 +1,77 @@
-.side-nav-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 22;
-
-  &__overlay {
-    height: 100%;
-    flex: 0 0 100%;
-    background: rgba(0, 0, 0, .4);
-  }
-
-}
-
-.side-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 25vw;
-  background: white;
-  box-shadow: 7px 0px 5px 0px rgba(0,0,0,0.27);
-  display: flex;
-  flex-direction: column;
-
-    &__header {
-    background: #3F51B5;
-    width: 25vw;
-    height: 200px;
-  }
-
-  &__item {
-    &__container {
-      display: flex;
-      padding: 16px;
-    }
-    &__text {
-      margin: auto 16px;
-    }
-    &:hover {
-      background: #e3e3e3;
-    }
-  }
-}
-
-.inner-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  overflow: hidden;
-
-}
-
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  z-index: 10;
-  background: rgba(0, 0, 0, .4);
-}
-
-.fake-toolbar {
-  z-index: 9;
-  position: fixed;
-  top: 0;
-  left: 0;
-}
-
-.menu {
-  margin-right: 16px;
-}
-
-md-toolbar {
-  position: relative;
-}
-
 .fab-menu {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: absolute;
+  //display: flex;
+  //flex-direction: row;
+  position: fixed;
   bottom: 0;
   right: 0;
-  margin-bottom: -140px;
-  margin-right: 32px;
-  z-index: 11;
+  margin: 32px;
+  z-index: 4;
 
-  &__item {
-    align-self: center;
-    margin-top: 16px;
-    visibility: hidden;
-
-    &--shown {
-      visibility: visible;
-    }
-  }
-}
-
-.title-card {
-  align-self: center;
-  margin-top: -64px;
-  width: 64vw;
-  height: 50vh;
-}
-
-.statistics-card {
-  align-self: center;
-  margin-top: 32px;
-  width: 64vw;
-}
-
-.main-content {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.todo {
-  display: flex;
-  flex-direction: column;
-  &__item {
-    padding: 16px;
-    border-bottom: 1px solid #757575;
-  }
-}
-
-.graph {
-  max-width: 256px;
-  max-height: 256px;
-  position: relative;
-  align-items: center;
-
-  &--inside-text {
-    align-items: center;
+  &__options {
     display: flex;
-    flex-direction: column;
-    font-size: 18px;
-    font-weight: bold;
+    flex-direction:row;
     justify-content: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
   }
 
+  &__item {
+    margin-bottom: 16px;
+  }
+
+}
+
+
+.overlay {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  border-radius: 100% 0 0 0;
+  background: rgba(0, 0, 0, .35);
+  width: 200vw;
+  height: 200vh;
+  z-index: 3;
+}
+
+.toolbar {
+  position: fixed;
+  z-index: 2;
+
+  &__icon {
+    margin-right: 16px;
+  }
+
+  &__fill {
+    flex: 1 1 auto;
+  }
+
+}
+
+md-sidenav {
+  width: 300px;
+}
+
+.header {
+  display: flex;
+  background: #3f51b5;
+  height: 200px;
+
+
+  &__username {
+    align-self: flex-end;
+    display: flex;
+    justify-content: center;
+    margin: 16px;
+    color: white;
+    bottom: 0;
+
+    span {
+      align-self: center;
+      margin-left: 16px;
+    }
+
+  }
+}
+
+.sidenav-icon {
+  color: #757575;
+  margin-right: 16px;
 }

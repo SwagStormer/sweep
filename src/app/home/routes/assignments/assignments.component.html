@@ -1,0 +1,13 @@
+<div class="container">
+  <md-tab-group>
+    <md-tab label="Needs Grading">
+      <app-assignment-submissions [filters]="{graded: false}" ></app-assignment-submissions>
+    </md-tab>
+    <md-tab label="Assigned">
+      <app-assignments-table [filters]="{}"></app-assignments-table>
+    </md-tab>
+    <md-tab label="Graded">
+      <app-assignment-submissions [filters]="{graded: true}"></app-assignment-submissions>
+    </md-tab>
+  </md-tab-group>
+</div>

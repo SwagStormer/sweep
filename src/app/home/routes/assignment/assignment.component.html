@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="container__header">Essay</div>
+  <md-tab-group>
+    <md-tab label="Info">
+      <h3>Description</h3>
+      <p>As he lieutenantgeneral have in it of elite. The as and eyes it at into magicians preparation the recently as poets, in far but grammar. Economic so, train had parents when that and in by on maybe made headline big packed since recommended. The be been in world I and any recently of as respond of in here. Live the on of be I the what feedback. Become deceleration were tone was surely a and boss's world as follow brief the truth,
+        gleaning lose look the up he paper which of came anyone options if view.Remodelling from and watch.</p>
+    </md-tab>
+    <md-tab label="Ungraded Submissions">
+      <!--<div class="submissions-container">-->
+        <!--<div class="submissions-container__header">-->
+          <!--<md-icon>search</md-icon>-->
+          <!--<md-input-container>-->
+            <!--<input mdInput placeholder="Search">-->
+          <!--</md-input-container>-->
+        <!--</div>-->
+        <!--<table>-->
+          <!--<tr class="assignment" *ngFor="let assignment of assignments" (click)="navigateToDetail(assignment.id)">-->
+            <!--<td>04/30</td>-->
+            <!--<td>-->
+              <!--English: Essay-->
+            <!--</td>-->
+            <!--<td>Ryan Berger</td>-->
+
+            <!--<td>-->
+              <!--<button md-button>-->
+                <!--0/100-->
+              <!--</button>-->
+            <!--</td>-->
+          <!--</tr>-->
+        <!--</table>-->
+      <!--</div>-->
+      <app-assignment-submissions [filters]="{}" ></app-assignment-submissions>
+    </md-tab>
+    <md-tab label="Graded Submissions">
+      <app-assignment-submissions [filters]="{graded: true}"></app-assignment-submissions>
+    </md-tab>
+  </md-tab-group>
+</div>

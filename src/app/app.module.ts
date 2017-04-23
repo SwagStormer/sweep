@@ -9,22 +9,65 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { CourseComponent } from './home/routes/course/course.component';
+import { AssignmentComponent } from './home/routes/assignment/assignment.component';
+import { GradeComponent } from './home/routes/grade/grade.component';
+import { AssignmentsComponent } from './home/routes/assignments/assignments.component';
+import { DashboardComponent } from './home/routes/dashboard/dashboard.component';
+import { AssignmentSubmissionsComponent } from './shared/components/assignment-submissions/assignment-submissions.component';
+import { PeriodsComponent } from './shared/components/periods/periods.component';
+import { CoursesTableComponent } from './shared/components/courses-table/courses-table.component';
+import { StudentsTableComponent } from './shared/components/students-table/students-table.component';
+import {StudentsComponent} from './home/routes/students/students.component';
+import { AssignmentsTableComponent } from './shared/components/assignments-table/assignments-table.component';
+import { AssignmentCreateComponent } from './shared/components/assignment-create/assignment-create.component';
+import { AuthService } from './shared/TSData/auth.service';
+import { TSDataModule } from './shared/TSData/tsdata.module';
+import { CourseService } from './shared/models/course-service';
+import { AssignmentService } from './shared/models/assignment-service';
+import { AssignmentSubmisionService } from './shared/models/assignment-submission-service';
+import { PeriodService } from './shared/models/period-service';
+import { StudentService } from './shared/models/student-service';
+import { TeacherService } from './shared/models/teacher-service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    DashboardComponent,
+    CourseComponent,
+    AssignmentComponent,
+    GradeComponent,
+    AssignmentsComponent,
+    AssignmentSubmissionsComponent,
+    PeriodsComponent,
+    CoursesTableComponent,
+    StudentsTableComponent,
+    StudentsComponent,
+    AssignmentsTableComponent,
+    AssignmentCreateComponent,
+  ],
+  entryComponents: [
+    AssignmentCreateComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     MaterialModule,
+    TSDataModule,
     ChartsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    CourseService,
+    AssignmentService,
+    AssignmentSubmisionService,
+    PeriodService,
+    StudentService,
+    TeacherService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

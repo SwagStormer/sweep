@@ -1,0 +1,31 @@
+<div class="header" *ngIf="!_filters.graded">Assignments to be graded</div>
+<div class="header" *ngIf="_filters.graded">Graded assignments</div>
+
+<div class="container">
+  <div class="container__header" *ngIf="!_synopsis">
+    <md-icon>search</md-icon>
+    <md-input-container>
+      <input mdInput placeholder="Search" [(ngModel)]="searchText" (ngModelChange)="search($event)">
+    </md-input-container>
+  </div>
+  <table>
+    <tr class="assignment" *ngFor="let assignment of assignmentSubmissions" (click)="navigateToAssignment(assignment.id)">
+      <div class="assignment__name">
+        <div class="assignment__name__course" *ngIf = !inDetail>{{assignment.assignment.course.name}}: </div>
+        {{assignment.assignment.name}} - {{assignment.student.user.first_name}} {{assignment.student.user.last_name}}
+      </div>
+
+      <td>
+        <button md-button>
+          {{assignment.grade}} / {{assignment.assignment.out_of}}
+        </button>
+      </td>
+    </tr>
+  </table>
+  <button
+    *ngIf="_synopsis"
+    md-raised-button
+    (click)="navigate()"
+    class="more-button"
+    color="accent">MORE</button>
+</div>

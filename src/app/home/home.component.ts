@@ -1,57 +1,44 @@
 import {
   Component,
   OnInit,
-  ViewContainerRef
-} from '@angular/core';
-import { Spin } from '../animations/spin'
-import { FlyIn } from '../animations/fly-in';
-import { State } from '../animations/state';
 
+} from '@angular/core';
+import { Router } from '@angular/router';
+import { State } from '../animations/state';
+import { spin } from '../animations/spin';
+import { expand } from '../animations/expand';
+import { MdDialog } from '@angular/material';
+import { AssignmentCreateComponent } from '../shared/components/assignment-create/assignment-create.component';
+import { AuthService } from '../shared/TSData/auth.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   animations: [
-    new Spin().self(),
-    new FlyIn().self()
-  ],
+    spin,
+    expand,
+  ]
 })
 export class HomeComponent implements OnInit {
 
-  private sideNav: State = new State('derp', 'derp');
+  public state: State = new State('closed', 'open');
 
-  private spin: State = new State('closed', 'open');
+  constructor(
+    private router: Router,
+    private dialog: MdDialog,
+    private auth: AuthService
+  ) {}
 
-  private chartOptions = {
-    animation: {
-      animateRotate: true,
-      animateScale: false
-    },
-    cutoutPercentage: 85
-  };
+  ngOnInit() {}
 
-  private chartColors: any[] = ['#37b24d', "#c92a2a"];
-
-  private data = [];
-
-  private todos = [
-    "Talk to student",
-    "Finish grading that assignment",
-    "Be awesome",
-    "Do something cool"
-  ];
-
-  constructor() {
-
+  logout() {
+    this.auth.logout();
+    this.router.navigate(['login']);
   }
 
-  ngOnInit() {
-    this.data = [
-      {
-        data: [60, 40],
-        backgroundColor: this.chartColors
-      },
-    ];
+  createAssignment() {
+    this.state.toggle();
+    const dialog = this.dialog.open(AssignmentCreateComponent);
   }
 
 }
