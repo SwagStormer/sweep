@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentsComponent implements OnInit {
 
+  public filters = {};
+
   constructor() { }
 
   ngOnInit() {
+    console.log(this.filters)
   }
 
 }
