@@ -1,4 +1,4 @@
-Here are best practices for Angular2/typescript and scss
+ Here are best practices for Angular2/typescript and scss
 
 TYPESCRIPT:
 

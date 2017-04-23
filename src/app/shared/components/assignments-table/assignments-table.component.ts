@@ -37,20 +37,20 @@ export class AssignmentsTableComponent implements OnInit {
   public search(event) {
     const d = new Date();
     this.lastSearched = d.getMilliseconds();
-    this.checkDebounce(this.lastSearched);
+    this.checkDebounce(this.lastSearched, event);
   }
 
-  private checkDebounce(time: any) {
+  private checkDebounce(time: any, event) {
     setTimeout(() => {
       if (time === this.lastSearched) {
-        this.filters = Object.assign(this._filters, {'search': this.searchText});
+        this.filters = Object.assign(this._filters, {'search': event});
       }
     }, 350);
   }
 
   openDialog() {
     const dialog = this.dialog.open(AssignmentCreateComponent);
-    dialog.componentInstance.selectCourse(this._filters['course'])
+    dialog.componentInstance.selectCourse(this._filters['course']);
   }
 
 }
