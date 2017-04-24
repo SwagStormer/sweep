@@ -9,6 +9,7 @@ import { AssignmentsComponent } from './home/routes/assignments/assignments.comp
 import { AssignmentComponent } from './home/routes/assignment/assignment.component';
 import {StudentsComponent} from "./home/routes/students/students.component";
 import {LoginComponent} from "./login/login.component";
+import { StudentComponent } from './home/routes/student/student.component';
 const routes: Routes = [{
   path: '',
   component: HomeComponent,
@@ -37,6 +38,10 @@ const routes: Routes = [{
     {
       path: 'my-students',
       component: StudentsComponent
+    },
+    {
+      path: 'student/:id',
+      component: StudentComponent
     },
     {
       path: 'grade',

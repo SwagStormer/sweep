@@ -27,6 +27,11 @@ export class StudentsTableComponent implements OnInit {
       this.students = students;
     });
   }
+
+  navigateToDetail(id: number) {
+    this.router.navigate(['student', id]);
+  }
+
   navigateToSubmission(id: number, event: any) {
     event.stopPropagation();
     this.router.navigate(['grade'], {queryParams: {student: id}});

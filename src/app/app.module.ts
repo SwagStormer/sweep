@@ -29,6 +29,7 @@ import { AssignmentSubmisionService } from './shared/models/assignment-submissio
 import { PeriodService } from './shared/models/period-service';
 import { StudentService } from './shared/models/student-service';
 import { TeacherService } from './shared/models/teacher-service';
+import { StudentComponent } from './home/routes/student/student.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { TeacherService } from './shared/models/teacher-service';
     StudentsComponent,
     AssignmentsTableComponent,
     AssignmentCreateComponent,
+    StudentComponent,
   ],
   entryComponents: [
     AssignmentCreateComponent

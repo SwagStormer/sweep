@@ -1,0 +1,14 @@
+<div *ngIf="student" class="container">
+  <div class="container__header">
+    {{student.user.first_name}} {{student.user.last_name}}
+  </div>
+  <md-tab-group>
+    <md-tab label="Courses">
+      <app-courses-table [filters]="{student: student.id}" [cached]="false"></app-courses-table>
+    </md-tab>
+    <md-tab label="Submissions">
+      <app-assignment-submissions [filters]="{student: student.id}"></app-assignment-submissions>
+    </md-tab>
+    <md-tab label=""></md-tab>
+  </md-tab-group>
+</div>
