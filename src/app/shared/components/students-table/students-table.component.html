@@ -7,7 +7,7 @@
     </md-input-container>
   </div>
   <div class="students">
-    <md-card *ngFor="let student of students">
+    <md-card *ngFor="let student of students" (click)="navigateToDetail(student.id)">
       <md-card-title>{{student.user.first_name}} {{student.user.last_name}}</md-card-title>
       <md-card-actions>
         <button md-button color="accent" (click)="navigateToSubmission(student.id, $event)">Grade Assignments</button>
