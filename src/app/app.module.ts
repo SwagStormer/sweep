@@ -21,7 +21,7 @@ import { StudentsTableComponent } from './shared/components/students-table/stude
 import {StudentsComponent} from './home/routes/students/students.component';
 import { AssignmentsTableComponent } from './shared/components/assignments-table/assignments-table.component';
 import { AssignmentCreateComponent } from './shared/components/assignment-create/assignment-create.component';
-import { AuthService } from './shared/TSData/auth.service';
+import { AuthService, CanActivateViaAuthGuard } from './shared/TSData/auth.service';
 import { TSDataModule } from './shared/TSData/tsdata.module';
 import { CourseService } from './shared/models/course-service';
 import { AssignmentService } from './shared/models/assignment-service';
@@ -68,7 +68,8 @@ import { StudentComponent } from './home/routes/student/student.component';
     AssignmentSubmisionService,
     PeriodService,
     StudentService,
-    TeacherService
+    TeacherService,
+    CanActivateViaAuthGuard
   ],
   bootstrap: [AppComponent]
 })

@@ -53,15 +53,14 @@ export class HttpService {
 
   }
   private request(method, url: string, body: any, params: any = {}) {
-    console.log(this.headers);
-    let headers = new Headers(this.headers);
-    let endsInSlashOrParams = /.*\/$|.*\?.*/g;
+    const headers = new Headers(this.headers);
+    const endsInSlashOrParams = /.*\/$|.*\?.*/g;
     if (!endsInSlashOrParams.test(url)) {
       url += '/';
     }
     // build param string
-    let paramStr = Object.keys(params).reduce((acc, cur, i) => `${acc}${i > 0 ? '&' : ''}${cur}=${params[cur]}`, '');
-    let options = new RequestOptions({ headers, search: paramStr });
+    const paramStr = Object.keys(params).reduce((acc, cur, i) => `${acc}${i > 0 ? '&' : ''}${cur}=${params[cur]}`, '');
+    const options = new RequestOptions({ headers, search: paramStr });
     let obs: any;
     if (method.toLowerCase() === 'get' || method.toLowerCase() === 'delete') {
       obs = this.http[method](url, options);

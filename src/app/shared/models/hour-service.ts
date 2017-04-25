@@ -1,6 +1,7 @@
 import {Store} from "../TSData/store";
 import {Record} from "../TSData/record";
 export interface IHour {
+  id: number;
   name: string;
   course: number;
   period: number;

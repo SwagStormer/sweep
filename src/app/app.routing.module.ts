@@ -10,9 +10,11 @@ import { AssignmentComponent } from './home/routes/assignment/assignment.compone
 import {StudentsComponent} from "./home/routes/students/students.component";
 import {LoginComponent} from "./login/login.component";
 import { StudentComponent } from './home/routes/student/student.component';
+import { CanActivateViaAuthGuard } from './shared/TSData/auth.service';
 const routes: Routes = [{
   path: '',
   component: HomeComponent,
+  canActivate: [CanActivateViaAuthGuard],
   children: [
     {
       path: '',

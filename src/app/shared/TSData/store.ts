@@ -55,7 +55,6 @@ export abstract class Store<T> {
     if (forced || !this.cache.isValid()) {
       return this.http.get(this.restUrl, params)
         .map((items: any[]) => {
-          console.log(items);
           const results = items.map(item => new this.recordClass(item));
           this.cache.validate()
           this.cache.refresh(results);

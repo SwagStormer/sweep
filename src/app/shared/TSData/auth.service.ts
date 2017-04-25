@@ -4,8 +4,10 @@ import { HttpService } from './http.service';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { ProjectApiConfig } from './project-api-config';
 import { UserService } from './user/user.service';
+import { CanActivate, Router } from '@angular/router';
+import { Location } from '@angular/common';
 
-const AUTH_TOKEN_HEADER: string = 'Authorization'
+const AUTH_TOKEN_HEADER = 'Authorization';
 
 @Injectable()
 export class AuthService {
@@ -17,9 +19,9 @@ export class AuthService {
     private http: HttpService,
     private cookieService: CookieService,
     private userService: UserService ) {
-      let token = this.cookieService.get('token')
+      const token = this.cookieService.get('token')
       console.log(token);
-      if(token != undefined) {
+      if(token !== undefined) {
         this.setAuthToken(token);
       }
     }
@@ -65,4 +67,18 @@ export class AuthService {
     this.http.updateHeader(AUTH_TOKEN_HEADER, 'Token ' + token);
   }
 
+}
+
+@Injectable()
+export class CanActivateViaAuthGuard implements CanActivate {
+  constructor(private auth: AuthService, private router: Router) {}
+
+  canActivate() {
+    const loggedIn = this.auth.isLoggedIn();
+    if (!loggedIn) {
+      this.router.navigate(['login']);
+      return loggedIn;
+    }
+    return loggedIn;
+  }
 }

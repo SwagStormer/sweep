@@ -26,8 +26,8 @@ export class GradeComponent implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      if (params['assignment']) {
-        this.assignmentSubmissionService.read(+params['assignment']).subscribe(submission => {
+      if (params['assignment_submission']) {
+        this.assignmentSubmissionService.read(+params['assignment_submission']).subscribe(submission => {
           if (!submission) {
             this.navigateBack();
           }
@@ -39,8 +39,8 @@ export class GradeComponent implements OnInit {
             this.navigateBack();
           }
           this.initialLength = submissions.length;
-          this.currentAssignment = submissions[0];
-          submissions.splice(0, 1);
+          this.currentAssignment = submissions[this.initialLength - 1];
+          submissions.pop();
           this.submissions = submissions;
         });
       } else if (params['student']) {
@@ -49,8 +49,18 @@ export class GradeComponent implements OnInit {
             this.navigateBack();
           }
           this.initialLength = submissions.length;
-          this.currentAssignment = submissions[0];
-          submissions.splice(0, 1);
+          this.currentAssignment = submissions[this.initialLength - 1];
+          submissions.pop();
+          this.submissions = submissions;
+        });
+      } else if (params['assignment']) {
+        this.assignmentSubmissionService.readList({assignment: +params['assignment']}).subscribe(submissions => {
+          if (submissions.length === 0) {
+            this.navigateBack();
+          }
+          this.initialLength = submissions.length;
+          this.currentAssignment = submissions[this.initialLength - 1];
+          submissions.pop();
           this.submissions = submissions;
         });
       }
@@ -71,8 +81,8 @@ export class GradeComponent implements OnInit {
     });
     console.log(this.hasNext());
     if (this.hasNext()) {
-      this.currentAssignment = this.submissions[0];
-      this.submissions.splice(0, 1);
+      this.currentAssignment = this.submissions[this.submissions.length - 1];
+      this.submissions.pop()
     } else {
       this.navigateBack();
     }

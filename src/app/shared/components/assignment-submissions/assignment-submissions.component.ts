@@ -40,7 +40,7 @@ export class AssignmentSubmissionsComponent implements OnInit {
     });
   }
   navigateToAssignment(id: number) {
-    this.router.navigate(['grade'], {queryParams: {assignment: id}});
+    this.router.navigate(['grade'], {queryParams: {assignment_submission: id}});
 
   }
 

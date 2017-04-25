@@ -1,6 +1,7 @@
 import {Store} from "../TSData/store";
 import {Record} from "../TSData/record";
 export interface IAssignment {
+  id: number;
   name: string;
   description: string;
   due_by: string;
