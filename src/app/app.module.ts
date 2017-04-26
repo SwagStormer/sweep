@@ -3,7 +3,10 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app.routing.module';
-import { MaterialModule } from '@angular/material';
+import {
+  MaterialModule, MdButtonModule, MdCardModule, MdToolbarModule, MdInputModule,
+  MdProgressBarModule, MdSelectModule
+} from '@angular/material';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 
 import { AppComponent } from './app.component';
@@ -30,6 +33,7 @@ import { PeriodService } from './shared/models/period-service';
 import { StudentService } from './shared/models/student-service';
 import { TeacherService } from './shared/models/teacher-service';
 import { StudentComponent } from './home/routes/student/student.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -55,6 +59,7 @@ import { StudentComponent } from './home/routes/student/student.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpModule,
     MaterialModule,
