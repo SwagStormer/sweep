@@ -1,0 +1,11 @@
+Our Goals Prioritized:
+
+1. Simplify / Refactor
+  a) show student grades (index)
+2. Different Assignment Types
+  a) Announcements
+3. Quiz Engine
+4. Student View
+5. Counselor View
+6. Admin View
+7. Site Template / Blog Engine

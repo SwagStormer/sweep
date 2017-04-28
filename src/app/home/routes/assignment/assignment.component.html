@@ -7,7 +7,7 @@
     </md-tab>
     <md-tab label="Ungraded Submissions">
       <button md-raised-button color="accent" class="grade-button" (click)="gradeSubmissions()">GRADE SUBMISSIONS</button>
-      <app-assignment-submissions [filters]="{assignment: assignment.id}" ></app-assignment-submissions>
+      <app-assignment-submissions [filters]="{assignment: assignment.id, graded: false}" ></app-assignment-submissions>
     </md-tab>
     <md-tab label="Graded Submissions">
       <app-assignment-submissions [filters]="{assignment: assignment.id, graded: true}"></app-assignment-submissions>

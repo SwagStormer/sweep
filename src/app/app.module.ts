@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app.routing.module';
 import {
   MaterialModule, MdButtonModule, MdCardModule, MdToolbarModule, MdInputModule,
-  MdProgressBarModule, MdSelectModule
+  MdProgressBarModule, MdSelectModule, MdIconModule, MdSidenavModule, MdOptionModule
 } from '@angular/material';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 
