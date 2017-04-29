@@ -4,41 +4,18 @@ import {
 
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { State } from '../animations/state';
-import { spin } from '../animations/spin';
-import { expand } from '../animations/expand';
 import { MdDialog } from '@angular/material';
-import { AssignmentCreateComponent } from '../shared/components/assignment-create/assignment-create.component';
+import { AssignmentCreateComponent } from '../teacher/components/assignment-create/assignment-create.component';
 import { AuthService } from '../shared/TSData/auth.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
-  animations: [
-    spin,
-    expand,
-  ]
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
-  public state: State = new State('closed', 'open');
-
-  constructor(
-    private router: Router,
-    private dialog: MdDialog,
-    private auth: AuthService
-  ) {}
-
   ngOnInit() {}
 
-  logout() {
-    this.auth.logout();
-    this.router.navigate(['login']);
-  }
+  constructor() {}
 
-  createAssignment() {
-    this.state.toggle();
-    const dialog = this.dialog.open(AssignmentCreateComponent);
-  }
 
 }

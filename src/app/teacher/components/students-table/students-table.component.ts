@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import { StudentService } from '../../models/student-service';
+import { StudentService } from '../../../shared/models/student-service';
 
 @Component({
   selector: 'app-students-table',

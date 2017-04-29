@@ -1,9 +1,8 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import { AssignmentSubmisionService } from '../../models/assignment-submission-service';
-import { AssignmentService } from '../../models/assignment-service';
-import { StudentService } from '../../models/student-service';
-import { CourseService } from '../../models/course-service';
+import { AssignmentSubmisionService } from '../../../shared/models/assignment-submission-service';
+import { AssignmentService } from '../../../shared/models/assignment-service';
+import { StudentService } from '../../../shared/models/student-service';
 @Component({
   selector: 'app-assignment-submissions',
   templateUrl: './assignment-submissions.component.html',

@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MdDialogRef } from '@angular/material';
-import {AssignmentSubmisionService} from '../../models/assignment-submission-service';
-import {CourseService, ICourse} from '../../models/course-service';
-import {AssignmentService, IAssignment} from '../../models/assignment-service';
 import { DateFormatter } from '@angular/common/src/pipes/intl';
+import { CourseService, ICourse } from '../../../shared/models/course-service';
+import { AssignmentService, IAssignment } from '../../../shared/models/assignment-service';
 
 
 

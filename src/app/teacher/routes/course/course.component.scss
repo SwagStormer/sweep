@@ -3,8 +3,17 @@
   &__header {
     padding: 40px;
     font-size: 32px;
+    display: flex;
   }
 
+}
+
+.filler {
+  flex: 1 1 auto;
+}
+
+.settings {
+  cursor: pointer;
 }
 
 .assignment-header {

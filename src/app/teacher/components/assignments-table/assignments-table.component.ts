@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import { AssignmentService } from '../../models/assignment-service';
 import { MdDialog } from '@angular/material';
 import { AssignmentCreateComponent } from '../assignment-create/assignment-create.component';
+import { AssignmentService } from '../../../shared/models/assignment-service';
 @Component({
   selector: 'app-assignments-table',
   templateUrl: './assignments-table.component.html',

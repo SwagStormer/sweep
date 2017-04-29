@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import { CourseService } from '../../models/course-service';
+import { CourseService } from '../../../shared/models/course-service';
 
 @Component({
   selector: 'app-courses-table',

@@ -1,0 +1,18 @@
+<div class="container" *ngIf="course">
+  <div class="container__header">
+    <div class="course-name">{{course.name}}</div>
+    <div class="filler"></div>
+    <md-icon class="settings">settings</md-icon>
+  </div>
+  <md-tab-group>
+    <md-tab label="Assignments">
+      <app-assignments-table [filters]="{course: course.id}" [inDetail]="true"></app-assignments-table>
+    </md-tab>
+    <md-tab label="Students">
+      <app-students-table [filters]="{course: course.id}"></app-students-table>
+    </md-tab>
+    <md-tab label="Submissions">
+      <app-assignment-submissions [filters]="{course: course.id}"></app-assignment-submissions>
+    </md-tab>
+  </md-tab-group>
+</div>

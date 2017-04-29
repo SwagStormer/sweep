@@ -12,18 +12,18 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { CourseComponent } from './home/routes/course/course.component';
-import { AssignmentComponent } from './home/routes/assignment/assignment.component';
-import { GradeComponent } from './home/routes/grade/grade.component';
-import { AssignmentsComponent } from './home/routes/assignments/assignments.component';
-import { DashboardComponent } from './home/routes/dashboard/dashboard.component';
-import { AssignmentSubmissionsComponent } from './shared/components/assignment-submissions/assignment-submissions.component';
-import { PeriodsComponent } from './shared/components/periods/periods.component';
-import { CoursesTableComponent } from './shared/components/courses-table/courses-table.component';
-import { StudentsTableComponent } from './shared/components/students-table/students-table.component';
-import {StudentsComponent} from './home/routes/students/students.component';
-import { AssignmentsTableComponent } from './shared/components/assignments-table/assignments-table.component';
-import { AssignmentCreateComponent } from './shared/components/assignment-create/assignment-create.component';
+import { CourseComponent } from './teacher/routes/course/course.component';
+import { AssignmentComponent } from './teacher/routes/assignment/assignment.component';
+import { GradeComponent } from './teacher/routes/grade/grade.component';
+import { AssignmentsComponent } from './teacher/routes/assignments/assignments.component';
+import { DashboardComponent } from './teacher/routes/dashboard/dashboard.component';
+import { AssignmentSubmissionsComponent } from './teacher/components/assignment-submissions/assignment-submissions.component';
+import { PeriodsComponent } from './teacher/components/periods/periods.component';
+import { CoursesTableComponent } from './teacher/components/courses-table/courses-table.component';
+import { StudentsTableComponent } from './teacher/components/students-table/students-table.component';
+import {StudentsComponent} from './teacher/routes/students/students.component';
+import { AssignmentsTableComponent } from './teacher/components/assignments-table/assignments-table.component';
+import { AssignmentCreateComponent } from './teacher/components/assignment-create/assignment-create.component';
 import { AuthService, CanActivateViaAuthGuard } from './shared/TSData/auth.service';
 import { TSDataModule } from './shared/TSData/tsdata.module';
 import { CourseService } from './shared/models/course-service';
@@ -32,30 +32,16 @@ import { AssignmentSubmisionService } from './shared/models/assignment-submissio
 import { PeriodService } from './shared/models/period-service';
 import { StudentService } from './shared/models/student-service';
 import { TeacherService } from './shared/models/teacher-service';
-import { StudentComponent } from './home/routes/student/student.component';
+import { StudentComponent } from './teacher/routes/student/student.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ServiceModule } from './shared/models/service.module';
+import { TeacherModule } from './teacher/teacher.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    DashboardComponent,
-    CourseComponent,
-    AssignmentComponent,
-    GradeComponent,
-    AssignmentsComponent,
-    AssignmentSubmissionsComponent,
-    PeriodsComponent,
-    CoursesTableComponent,
-    StudentsTableComponent,
-    StudentsComponent,
-    AssignmentsTableComponent,
-    AssignmentCreateComponent,
-    StudentComponent,
-  ],
-  entryComponents: [
-    AssignmentCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -68,12 +54,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule
   ],
   providers: [
-    CourseService,
-    AssignmentService,
-    AssignmentSubmisionService,
-    PeriodService,
-    StudentService,
-    TeacherService,
+    ServiceModule,
     CanActivateViaAuthGuard
   ],
   bootstrap: [AppComponent]
