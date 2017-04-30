@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="container__header">
+    <div>Grade Scale</div>
+    <md-icon class="container__edit">edit</md-icon>
+  </div>
+
+  <div class="letter-grade" *ngFor="let letterGrade of letterGrades">
+    <div class="letter-grade__grade">{{letterGrade.letter}}</div>
+    <div class="letter-grade__percent">
+      {{letterGrade.percent}}
+    </div>
+  </div>
+
+</div>
+

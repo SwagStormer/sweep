@@ -12,7 +12,7 @@
       <app-students-table [filters]="{course: course.id}"></app-students-table>
     </md-tab>
     <md-tab label="Submissions">
-      <app-assignment-submissions [filters]="{course: course.id}"></app-assignment-submissions>
+      <app-assignment-submissions [filters]="{course: course.id}" [inDetail]="true"></app-assignment-submissions>
     </md-tab>
   </md-tab-group>
 </div>

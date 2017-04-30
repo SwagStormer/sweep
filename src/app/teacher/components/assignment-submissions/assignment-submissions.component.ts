@@ -21,6 +21,8 @@ export class AssignmentSubmissionsComponent implements OnInit {
     this.getAssignmentSubmissions();
   };
 
+  @Input() inDetail = false;
+
   assignmentSubmissions = [];
   constructor(
     private router: Router,

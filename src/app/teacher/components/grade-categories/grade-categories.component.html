@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="container__header">
+    <div>Grade Categories</div>
+    <md-icon class="container__edit">edit</md-icon>
+  </div>
+  <div class="category" *ngFor="let category of gradeCategories">
+    <div class="category__name">{{category.name}}</div>
+    <div class="category__weight">
+      {{category.weight}}
+    </div>
+  </div>
+</div>

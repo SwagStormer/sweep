@@ -1,0 +1,33 @@
+.container {
+  &__header {
+    padding: 16px;
+    font-size: 24px;
+    display: flex;
+  }
+
+  &__edit {
+    margin-left: 32px;
+    margin-top: auto;
+    margin-bottom: auto;
+    cursor: pointer;
+  }
+
+}
+
+.letter-grade {
+  display: flex;
+  border-bottom: 1px solid #CCCCCC;
+  padding: 16px;
+
+  &__grade {
+    margin: auto 0;
+    padding: 0px 16px;
+  }
+
+  &__percent {
+    max-width: 32px;
+  }
+
+
+
+}

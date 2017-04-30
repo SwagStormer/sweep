@@ -21,6 +21,8 @@ import { ChartsModule } from 'ng2-charts';
 import { TeacherRoutingModule } from './teacher.routing.module';
 import { CourseSettingsComponent } from './routes/course-settings/course-settings.component';
 import { HourTableComponent } from './components/hour-table/hour-table.component';
+import { GradingScaleComponent } from './components/grading-scale/grading-scale.component';
+import { GradeCategoriesComponent } from './components/grade-categories/grade-categories.component';
 
 @NgModule({
   imports: [
@@ -49,6 +51,8 @@ import { HourTableComponent } from './components/hour-table/hour-table.component
     StudentComponent,
     CourseSettingsComponent,
     HourTableComponent,
+    GradingScaleComponent,
+    GradeCategoriesComponent,
   ],
   entryComponents: [
     AssignmentCreateComponent

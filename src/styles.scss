@@ -2,6 +2,8 @@
 
 body {
   margin: 0;
+  height: 100vh;
+  overflow-y: auto;
 }
 
 @import '~@angular/material/theming';
@@ -33,4 +35,8 @@ $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.filler {
+  flex: 1 1 auto;
 }

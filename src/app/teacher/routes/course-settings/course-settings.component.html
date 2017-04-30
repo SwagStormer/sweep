@@ -8,7 +8,10 @@
       <md-tab label="Hours">
         <app-hour-table [filters]="{course: course.id}"></app-hour-table>
       </md-tab>
-      <md-tab label="Grading Scale"></md-tab>
+      <md-tab label="Grading">
+        <app-grade-categories [filters]="{course: course.id}"></app-grade-categories>
+        <app-grading-scale [filters]="{course: course.id}"></app-grading-scale>
+      </md-tab>
     </md-tab-group>
   </div>
 </div>
