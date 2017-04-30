@@ -2,7 +2,7 @@
   <div class="container__header">
     <div class="course-name">{{course.name}}</div>
     <div class="filler"></div>
-    <md-icon class="settings">settings</md-icon>
+    <md-icon class="settings" (click)="navigateToSettings()">settings</md-icon>
   </div>
   <md-tab-group>
     <md-tab label="Assignments">

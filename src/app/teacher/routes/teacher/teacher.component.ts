@@ -26,7 +26,9 @@ export class TeacherComponent implements OnInit {
     private auth: AuthService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+
+  }
 
   logout() {
     this.auth.logout();

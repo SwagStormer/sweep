@@ -19,6 +19,8 @@ import { MaterialModule } from '@angular/material';
 import { ServiceModule } from '../shared/models/service.module';
 import { ChartsModule } from 'ng2-charts';
 import { TeacherRoutingModule } from './teacher.routing.module';
+import { CourseSettingsComponent } from './routes/course-settings/course-settings.component';
+import { HourTableComponent } from './components/hour-table/hour-table.component';
 
 @NgModule({
   imports: [
@@ -45,6 +47,8 @@ import { TeacherRoutingModule } from './teacher.routing.module';
     AssignmentsTableComponent,
     AssignmentCreateComponent,
     StudentComponent,
+    CourseSettingsComponent,
+    HourTableComponent,
   ],
   entryComponents: [
     AssignmentCreateComponent

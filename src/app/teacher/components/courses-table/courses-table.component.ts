@@ -28,11 +28,11 @@ export class CoursesTableComponent implements OnInit {
     });
   }
   navigateToDetail(id: number) {
-    this.router.navigate(['course', id]);
+    this.router.navigate(['teachers/course', id]);
   }
   speedGrade(id: number, event: any) {
     event.stopPropagation();
-    this.router.navigate(['grade'], {queryParams: {course: id}});
+    this.router.navigate(['teachers/grade'], {queryParams: {course: id}});
 
   }
 }

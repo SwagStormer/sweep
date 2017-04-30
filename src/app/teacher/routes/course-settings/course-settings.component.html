@@ -1,0 +1,14 @@
+<div class="container" *ngIf="course">
+  <div class="container__header">
+    <button md-icon-button class="back" (click)="navigateBack()"><md-icon>arrow_back</md-icon></button>
+    <div class="name">{{course.name}} Settings</div>
+  </div>
+  <div class="content">
+    <md-tab-group>
+      <md-tab label="Hours">
+        <app-hour-table [filters]="{course: course.id}"></app-hour-table>
+      </md-tab>
+      <md-tab label="Grading Scale"></md-tab>
+    </md-tab-group>
+  </div>
+</div>

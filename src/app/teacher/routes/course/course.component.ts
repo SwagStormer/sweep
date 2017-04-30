@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CourseService, ICourse } from '../../../shared/models/course-service';
 
 @Component({
@@ -11,7 +11,10 @@ export class CourseComponent implements OnInit {
 
   public course: ICourse;
 
-  constructor(public route: ActivatedRoute, private courseService: CourseService) {
+  constructor(
+    public route: ActivatedRoute,
+    private courseService: CourseService,
+    private router: Router) {
   }
 
   ngOnInit() {
@@ -21,7 +24,10 @@ export class CourseComponent implements OnInit {
         this.course = course;
       });
     });
-
-
   }
+
+  navigateToSettings() {
+    this.router.navigate(['./settings'], {relativeTo: this.route});
+  }
+
 }

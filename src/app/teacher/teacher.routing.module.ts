@@ -10,6 +10,7 @@ import { StudentsComponent } from './routes/students/students.component';
 import { StudentComponent } from './routes/student/student.component';
 import { GradeComponent } from './routes/grade/grade.component';
 import { TeacherComponent } from 'app/teacher/routes/teacher/teacher.component';
+import { CourseSettingsComponent } from './routes/course-settings/course-settings.component';
 
 const routes: Routes = [{
   path: '',
@@ -36,6 +37,10 @@ const routes: Routes = [{
       {
         path: 'course/:id',
         component: CourseComponent
+      },
+      {
+        path: 'course/:id/settings',
+        component: CourseSettingsComponent
       },
       {
         path: 'my-students',

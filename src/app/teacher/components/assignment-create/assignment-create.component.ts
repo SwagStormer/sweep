@@ -43,12 +43,10 @@ export class AssignmentCreateComponent implements OnInit {
   }
 
   valid(): boolean {
-
-    let valid =  this.assignment.name !== '' &&
+     return this.assignment.name !== '' &&
       this.assignment.description !== '' &&
       this.assignment.due_by !== '' &&
       this.assignment.course !== -1;
-    return valid;
   }
 
 

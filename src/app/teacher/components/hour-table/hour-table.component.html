@@ -1,0 +1,21 @@
+<div class="hour" *ngFor="let hour of hours">
+  <div class="hour__header">
+    <div class="hour__name">{{hour.name}}</div>
+
+    <div class="hour__filler"></div>
+
+    <button md-icon-button mdTooltip="Add Student to Hour" mdTooltipPosition="before">
+      <md-icon>person_add</md-icon>
+    </button>
+
+    <button md-icon-button *ngIf="!hour.toggled" (click)="hour.toggled = true">
+      <md-icon>arrow_drop_down</md-icon>
+    </button>
+
+    <button md-icon-button *ngIf="hour.toggled" (click)="hour.toggled = false">
+      <md-icon>arrow_drop_up</md-icon>
+    </button>
+
+  </div>
+  <app-students-table *ngIf="hour.toggled" [filters]="{hour: hour.id}" [searchEnabled]="false"></app-students-table>
+</div>

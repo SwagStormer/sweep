@@ -19,10 +19,9 @@ export class AuthService {
     private http: HttpService,
     private cookieService: CookieService,
     private userService: UserService ) {
-      const token = this.cookieService.get('token')
-      console.log(token);
-      if(token !== undefined) {
-        this.setAuthToken(token);
+      const userObj = this.cookieService.getObject('user');
+      if (userObj !== undefined) {
+        this.setAuthToken(userObj['token']);
       }
     }
 
@@ -33,13 +32,13 @@ export class AuthService {
       password: password
     });
     return request.do((response: any) => {
-      this.cookieService.put('token', response.token);
+      this.cookieService.putObject('user', response);
       this.setAuthToken(response.token);
     });
   }
 
   public isLoggedIn(): boolean {
-    const lUser = this.cookieService.get('token');
+    const lUser = this.cookieService.get('user');
     return !!(this.user.id || lUser);
   }
 
@@ -63,6 +62,10 @@ export class AuthService {
     });
   }
 
+  public getUserType(): string {
+    return this.cookieService.getObject('user')['type'];
+  }
+
   private setAuthToken(token: string): void {
     this.http.updateHeader(AUTH_TOKEN_HEADER, 'Token ' + token);
   }
@@ -82,3 +85,20 @@ export class CanActivateViaAuthGuard implements CanActivate {
     return loggedIn;
   }
 }
+
+@Injectable()
+export class IsTeacher implements CanActivate {
+  constructor(private auth: AuthService, private router: Router) {}
+
+  canActivate() {
+    const type = this.auth.getUserType()
+    const isTeacher = type === 'teacher';
+    if (!isTeacher) {
+      if (type === 'student') {
+        this.router.navigate(['students']);
+      }
+    }
+    return isTeacher;
+  }
+}
+

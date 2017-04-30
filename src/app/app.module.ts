@@ -24,7 +24,7 @@ import { StudentsTableComponent } from './teacher/components/students-table/stud
 import {StudentsComponent} from './teacher/routes/students/students.component';
 import { AssignmentsTableComponent } from './teacher/components/assignments-table/assignments-table.component';
 import { AssignmentCreateComponent } from './teacher/components/assignment-create/assignment-create.component';
-import { AuthService, CanActivateViaAuthGuard } from './shared/TSData/auth.service';
+import { AuthService, CanActivateViaAuthGuard, IsTeacher } from './shared/TSData/auth.service';
 import { TSDataModule } from './shared/TSData/tsdata.module';
 import { CourseService } from './shared/models/course-service';
 import { AssignmentService } from './shared/models/assignment-service';
@@ -55,7 +55,8 @@ import { TeacherModule } from './teacher/teacher.module';
   ],
   providers: [
     ServiceModule,
-    CanActivateViaAuthGuard
+    CanActivateViaAuthGuard,
+    IsTeacher
   ],
   bootstrap: [AppComponent]
 })

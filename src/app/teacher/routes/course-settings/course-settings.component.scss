@@ -1,0 +1,12 @@
+.container {
+  &__header {
+    padding: 32px;
+    font-size: 24px;
+    display: flex;
+  }
+}
+
+.name {
+  align-self: center;
+  margin-left: 16px;
+}

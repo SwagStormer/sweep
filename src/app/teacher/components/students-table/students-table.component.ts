@@ -17,6 +17,8 @@ export class StudentsTableComponent implements OnInit {
     this._filters = value;
     this.getStudents();
   };
+  @Input() searchEnabled: boolean = true;
+
   students = [];
   constructor(private router: Router, private studentService: StudentService) { }
 
@@ -29,12 +31,12 @@ export class StudentsTableComponent implements OnInit {
   }
 
   navigateToDetail(id: number) {
-    this.router.navigate(['student', id]);
+    this.router.navigate(['teachers/student', id]);
   }
 
   navigateToSubmission(id: number, event: any) {
     event.stopPropagation();
-    this.router.navigate(['grade'], {queryParams: {student: id}});
+    this.router.navigate(['teachers/grade'], {queryParams: {student: id}});
 
   }
 

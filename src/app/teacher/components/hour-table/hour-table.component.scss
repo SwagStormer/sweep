@@ -1,0 +1,21 @@
+.hour {
+  padding: 16px;
+  border-bottom: 1px solid #CCCCCC;
+
+  &__header {
+    display: flex;
+  }
+
+  button {
+    margin-right: 8px;
+  }
+
+  &__filler {
+    flex: 1 1 auto;
+  }
+
+  &__name {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+}

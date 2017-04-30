@@ -10,15 +10,21 @@ import { AssignmentComponent } from './teacher/routes/assignment/assignment.comp
 import {StudentsComponent} from "./teacher/routes/students/students.component";
 import {LoginComponent} from "./login/login.component";
 import { StudentComponent } from './teacher/routes/student/student.component';
-import { CanActivateViaAuthGuard } from './shared/TSData/auth.service';
-const routes: Routes = [{
-  path: '',
-  component: HomeComponent,
-  canActivate: [CanActivateViaAuthGuard],
+import { CanActivateViaAuthGuard, IsTeacher } from './shared/TSData/auth.service';
+const routes: Routes = [
+  {
+    path: '',
+    component: HomeComponent,
+    canActivate: [CanActivateViaAuthGuard],
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
   },
   {
     path: 'teachers',
-    loadChildren: 'app/teacher/teacher.module#TeacherModule'
+    loadChildren: 'app/teacher/teacher.module#TeacherModule',
+    canActivate: [CanActivateViaAuthGuard, IsTeacher]
   }
 ];
 @NgModule({
