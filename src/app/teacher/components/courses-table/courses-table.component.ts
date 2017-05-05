@@ -1,6 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import { CourseService } from '../../../shared/models/course-service';
+import { CourseService, ICourse } from '../../../shared/models/course-service';
+import { Store } from '@ngrx/store';
+import { ModelState } from '../../../shared/TSData/interfaces';
+import { readListAction, ReadListAction } from '../../../shared/TSData/actions';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-courses-table',
@@ -15,15 +19,15 @@ export class CoursesTableComponent implements OnInit {
     this.getCourses();
   };
 
-
   courses = [];
+
   constructor(private router: Router, private courseService: CourseService) {
   }
 
   ngOnInit() {
   }
   getCourses() {
-    this.courseService.readList(this._filters, !this.cached).subscribe(courses => {
+    this.courseService.readList(this._filters).subscribe(courses => {
       this.courses = courses;
     });
   }

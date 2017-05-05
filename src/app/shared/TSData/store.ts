@@ -86,6 +86,10 @@ export abstract class Store<T> {
       .map(response => new this.recordClass(response));
   }
 
+  public delete(id: number) {
+    return Observable.of();
+  }
+
   public loadRelation(id: number) {
 
   }

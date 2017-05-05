@@ -5,10 +5,12 @@ import { HttpService } from './http.service';
 import { UserService } from './user/user.service';
 import { HttpModule } from '@angular/http';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
 @NgModule({
   imports: [
     CommonModule,
-    HttpModule,
+    HttpModule
   ],
   declarations: [
 

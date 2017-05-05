@@ -1,0 +1,25 @@
+<div class="container">
+
+  <h2>Create Announcement</h2>
+
+  <md-input-container>
+    <input mdInput placeholder="Announcement" type="text" [(ngModel)]="announcement.announcement">
+  </md-input-container>
+
+  <md-select placeholder="Course" [(ngModel)]="announcement.course">
+    <md-option *ngFor="let course of courses" [value]="course.id">{{course.name}}</md-option>
+  </md-select>
+
+  <md-checkbox color="primary" [(ngModel)]="announcement.pinned">Pinned</md-checkbox>
+
+
+
+
+
+  <button
+    class="submit"
+    md-raised-button
+    color="accent"
+    (click)="submit()">Create Announcement</button>
+
+</div>

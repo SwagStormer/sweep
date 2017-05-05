@@ -23,6 +23,7 @@ import { CourseSettingsComponent } from './routes/course-settings/course-setting
 import { HourTableComponent } from './components/hour-table/hour-table.component';
 import { GradingScaleComponent } from './components/grading-scale/grading-scale.component';
 import { GradeCategoriesComponent } from './components/grade-categories/grade-categories.component';
+import { AnnouncementCreateComponent } from './components/announcement-create/announcement-create.component';
 
 @NgModule({
   imports: [
@@ -53,9 +54,11 @@ import { GradeCategoriesComponent } from './components/grade-categories/grade-ca
     HourTableComponent,
     GradingScaleComponent,
     GradeCategoriesComponent,
+    AnnouncementCreateComponent,
   ],
   entryComponents: [
-    AssignmentCreateComponent
+    AssignmentCreateComponent,
+    AnnouncementCreateComponent
   ],
 })
 export class TeacherModule { }

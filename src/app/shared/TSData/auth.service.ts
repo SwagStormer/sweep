@@ -45,8 +45,7 @@ export class AuthService {
   public logout(): void {
     this.http.removeHeader(AUTH_TOKEN_HEADER);
     this.user = {};
-    this.cookieService.remove('token');
-    this.userSubject$.next(this.user);
+    this.cookieService.remove('user');
   }
 
   public signUp(user: any): Observable<any> {

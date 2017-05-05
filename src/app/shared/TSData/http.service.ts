@@ -23,8 +23,8 @@ export class HttpService {
     return method;
   }
 
-  public delete(url: string, id: string | number, params: any = {}) {
-    this.request('delete', url, {}, params);
+  public delete(url: string, params: any = {}) {
+    return this.request('delete', url, {}, params);
   }
 
   public addHeader(key: string, value: string) {

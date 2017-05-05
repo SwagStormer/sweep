@@ -25,7 +25,7 @@ export class AssignmentsTableComponent implements OnInit {
   ngOnInit() {
   }
   navigateToGrades(id: number) {
-    this.router.navigate(['assignment', id]);
+    this.router.navigate(['teachers/assignment', id]);
 
   }
   getAssignments() {

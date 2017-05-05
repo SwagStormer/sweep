@@ -46,7 +46,7 @@ export class AssignmentSubmissionsComponent implements OnInit {
   }
 
   navigate() {
-    this.router.navigate(['assignments']);
+    this.router.navigate(['teachers/assignments']);
   }
 
 

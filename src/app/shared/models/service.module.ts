@@ -9,6 +9,7 @@ import { StudentService } from './student-service';
 import { TeacherService } from './teacher-service';
 import { LetterGradeService } from './letter-grade-service';
 import { GradeCategoryService } from './grade-category-service';
+import { AnnouncementService } from './announcement-service';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { GradeCategoryService } from './grade-category-service';
     StudentService,
     TeacherService,
     LetterGradeService,
-    GradeCategoryService
+    GradeCategoryService,
+    AnnouncementService
   ]
 })
 export class ServiceModule { }
