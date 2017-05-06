@@ -90,7 +90,7 @@ export abstract class Store<T> {
     return Observable.of();
   }
 
-  public loadRelation(id: number) {
-
+  public getDetailRoute(id: string|number, path: string) {
+    return this.http.get(`${this.restUrl}/${id}/${path}`);
   }
 }

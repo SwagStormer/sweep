@@ -16,7 +16,7 @@ import { TSDataModule } from './shared/TSData/tsdata.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceModule } from './shared/models/service.module';
 import { TeacherModule } from './teacher/teacher.module';
-import { CanActivateViaAuthGuard, IsTeacher } from './shared/TSData/auth.service';
+import { CanActivateViaAuthGuard, IsStudent, IsTeacher } from './shared/TSData/auth.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +37,8 @@ import { CanActivateViaAuthGuard, IsTeacher } from './shared/TSData/auth.service
   providers: [
     ServiceModule,
     CanActivateViaAuthGuard,
-    IsTeacher
+    IsTeacher,
+    IsStudent
   ],
   bootstrap: [AppComponent]
 })

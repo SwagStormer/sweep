@@ -10,10 +10,13 @@ import { TeacherService } from './teacher-service';
 import { LetterGradeService } from './letter-grade-service';
 import { GradeCategoryService } from './grade-category-service';
 import { AnnouncementService } from './announcement-service';
+import { MdButtonModule, MdCardModule } from '@angular/material';
 
 
 @NgModule({
   imports: [
+    MdCardModule,
+    MdButtonModule,
     CommonModule
   ],
   providers: [

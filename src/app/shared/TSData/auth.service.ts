@@ -90,7 +90,7 @@ export class IsTeacher implements CanActivate {
   constructor(private auth: AuthService, private router: Router) {}
 
   canActivate() {
-    const type = this.auth.getUserType()
+    const type = this.auth.getUserType();
     const isTeacher = type === 'teacher';
     if (!isTeacher) {
       if (type === 'student') {
@@ -98,6 +98,22 @@ export class IsTeacher implements CanActivate {
       }
     }
     return isTeacher;
+  }
+}
+
+@Injectable()
+export class IsStudent implements CanActivate {
+  constructor(private auth: AuthService, private router: Router) {}
+
+  canActivate() {
+    const type = this.auth.getUserType()
+    const isStudent = type === 'student';
+    if (!isStudent) {
+      if (type === 'teacher') {
+        this.router.navigate(['teachers']);
+      }
+    }
+    return isStudent;
   }
 }
 

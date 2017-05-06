@@ -5,6 +5,7 @@ export interface ICourse {
   name: string;
   teachers: any[];
   students: any[];
+  course_grade: any[];
 }
 
 export class CourseService extends Store<ICourse> {
