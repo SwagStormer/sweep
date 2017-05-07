@@ -1,3 +1,8 @@
-<p>
-  course works!
-</p>
+<div class="container" *ngIf="course">
+  <div class="container__header">{{course.name}}</div>
+  <md-tab-group>
+    <md-tab label="Assignments">
+      <app-assignments-table [filters]="{course: course.id}"></app-assignments-table>
+    </md-tab>
+  </md-tab-group>
+</div>
